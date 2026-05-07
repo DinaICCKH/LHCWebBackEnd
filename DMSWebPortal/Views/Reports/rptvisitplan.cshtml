@@ -1,0 +1,117 @@
+﻿@{
+    ViewData["Title"] = "Visit Plan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string startdate = "01-" + DateTime.Now.ToString("MM") + "-" + DateTime.Now.Year;
+    string enddate = DateTime.Now.ToString("dd-MM-yyyy");
+    var salesList = ViewBag.saleslist as List<DMSWebPortal.Models.SaleEmployeeMasterDataResult>;
+}
+
+<div class="row row-sub-page">
+    <div class="container-fluid container-sub-page">
+
+        <!-- Header -->
+        <div class="row row-sub-page-header">
+            <div class="col col-xxl-6 col-page-name">
+                <h6>Reports</h6>
+            </div>
+            <div class="col col-xxl-6 col-page-path">
+                <h6>Reports / Visit Plan</h6>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="row row-sub-page-body">
+            <div class="col col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 filter-container">
+                <div class="form-control combobox-container">
+                    <label>Select Salesman:</label>
+                    <select id="combobox_salesman" class="combobox">
+                        <option value="ALL">All</option>
+                        @foreach (var x in salesList)
+                        {
+                            <option value="@x.SalesCode">@x.SalesName</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-control combobox-container">
+                    <label>From Date:</label>
+                    <input type="text" id="txtfromdate" class="styled-input datetime"
+                           placeholder="dd-MM-yyyy" value="@startdate" readonly />
+                </div>
+
+                <div class="form-control combobox-container">
+                    <label>To Date:</label>
+                    <input type="text" id="txttodate" class="styled-input datetime"
+                           placeholder="dd-MM-yyyy" value="@enddate" readonly />
+                </div>
+
+                <!-- Report Option -->
+                <div class="form-control btn-container">
+                    <label>&nbsp;</label>
+                    <button class="btn btn-primary dropdown-toggle"
+                            type="button" data-bs-toggle="dropdown">
+                        <i class="fa-solid fa-chart-bar"></i> Report Option
+                    </button>
+
+                    <ul class="dropdown-menu shadow">
+                        <li>
+                            <a class="dropdown-item" onclick="previewReport()" href="javascript:void(0)">
+                                <i class="bi bi-eye text-info me-2"></i> Preview
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" onclick="exportReport('PDF')" href="javascript:void(0)">
+                                <i class="bi bi-file-pdf text-danger me-2"></i> Print PDF
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" onclick="exportReport('EXCELOPENXML')" href="javascript:void(0)">
+                                <i class="bi bi-file-earmark-excel text-success me-2"></i> Export Excel
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" onclick="exportReport('WORDOPENXML')" href="javascript:void(0)">
+                                <i class="bi bi-file-earmark-word text-primary me-2"></i> Export Word
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // --------------------------
+        //  Preview Inline (PDF)
+        // --------------------------
+        function previewReport() {
+            let salesman = $('#combobox_salesman').val() || 'All';
+            let fromDate = $('#txtfromdate').val() || ('01-' + new Date().toLocaleDateString('en-GB').split('/')[1] + '-' + new Date().getFullYear());
+            let toDate = $('#txttodate').val() || new Date().toLocaleDateString('en-GB').split('/').join('-');
+
+            let url = `/Reports/GenerateVisitPlanReport?SalesCode=${encodeURIComponent(salesman)}&FDate=${encodeURIComponent(fromDate)}&TDate=${encodeURIComponent(toDate)}&format=PDF&inline=true`;
+            window.open(url, "_blank");
+        }
+
+        // --------------------------
+        //  Export Report
+        // --------------------------
+        function exportReport(format) {
+            let salesman = $('#combobox_salesman').val() || 'All';
+            let fromDate = $('#txtfromdate').val() || ('01-' + new Date().toLocaleDateString('en-GB').split('/')[1] + '-' + new Date().getFullYear());
+            let toDate = $('#txttodate').val() || new Date().toLocaleDateString('en-GB').split('/').join('-');
+
+            let url = `/Reports/GenerateVisitPlanReport?SalesCode=${encodeURIComponent(salesman)}&FDate=${encodeURIComponent(fromDate)}&TDate=${encodeURIComponent(toDate)}&format=${format}&inline=false`;
+            window.open(url, "_blank");
+        }
+
+        $(document).ready(function () {
+            // Optional: initialize datepickers here if you want to make them editable
+        });
+    </script>
+}

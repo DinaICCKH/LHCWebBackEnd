@@ -1,0 +1,439 @@
+﻿<div class="row row-sub-page">
+    <div class="container-fluid container-sub-page">
+        <div class="row row-sub-page-header">
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-name">
+                <h6>Import Visit Plan</h6>
+            </div>
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-path">
+                <h6>Visit Plan / Import Visit Plan</h6>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 left-import-panel p-3">
+                <div class="steps mb-4">
+                    <div class="step-wrapper">
+                        <div class="step active">1</div>
+                        <div class="step-label">Started</div>
+                    </div>
+                    <div class="step-wrapper">
+                        <div class="step">2</div>
+                        <div class="step-label">Selected</div>
+                    </div>
+                    <div class="step-wrapper">
+                        <div class="step">3</div>
+                        <div class="step-label">Uploaded</div>
+                    </div>
+                    <div class="step-wrapper">
+                        <div class="step">4</div>
+                        <div class="step-label">Reading</div>
+                    </div>
+                    <div class="step-wrapper">
+                        <div class="step">5</div>
+                        <div class="step-label">Success</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary mb-3" id="btnDownloadTemplate">
+                    <i class="fa fa-download"></i> Download Template
+                </button>
+                <button class="btn btn-secondary mb-3" id="btnReset">Reset</button>
+
+                <div class="mb-3">
+                    <label for="fileInput" class="form-label">Select file</label>
+                    <input type="file" class="form-control" id="fileInput" accept=".xlsx" />
+                </div>
+
+                <div id="dropArea" class="p-3 mb-3">Drag & Drop file here</div>
+
+                <button class="btn btn-success" id="btnUpload" disabled>
+                    <i class="fa fa-upload"></i> Upload Template
+                </button>
+
+                <div id="uploadInfo" class="mb-3"></div>
+
+                <div class="progress mt-3" style="height: 20px;">
+                    <div class="progress-bar bg-info" role="progressbar" style="width:0%; height: 20px; transition: width 0.5s ease;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                </div>
+
+                <div id="notificationBadge" class="badge bg-danger" style="display: none;">0</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .left-import-panel {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .steps {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .step-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        position: relative;
+        z-index: 2;
+    }
+
+        .step-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: calc(100% - 40px);
+            height: 4px;
+            background-color: #e0e0e0;
+            z-index: -2;
+        }
+
+        .step-wrapper:last-child::after {
+            display: none;
+        }
+
+    .step {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #e0e0e0;
+        color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .step-label {
+        margin-top: 8px;
+        font-size: 12px;
+        text-align: center;
+        color: #333;
+    }
+
+    .step.active {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .step.success {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+    .step.error {
+        background-color: #dc3545;
+        color: #fff;
+    }
+
+    .step-wrapper.line-active::after {
+        background-color: #007bff;
+        transition: background-color 0.3s ease;
+    }
+
+    .step-wrapper.line-success::after {
+        background-color: #28a745;
+        transition: background-color 0.3s ease;
+    }
+
+    #dropArea {
+        border: 2px dashed #6c757d;
+        border-radius: 8px;
+        min-height: 120px;
+        text-align: center;
+        line-height: 120px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+        color: #6c757d;
+        background-color: #f8f9fa;
+    }
+
+        #dropArea.hover {
+            border-color: #007bff;
+            color: #007bff;
+            background-color: rgba(0, 123, 255, 0.1);
+            cursor: pointer;
+        }
+
+    .btn[disabled] {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+
+    #uploadInfo {
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #28a745;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+
+    .progress {
+        display: none;
+    }
+
+        .progress.active {
+            display: block;
+        }
+
+    #notificationBadge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 12px;
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        const $steps = $(".step");
+        const $stepWrappers = $(".step-wrapper");
+        const $fileInput = $("#fileInput");
+        const $uploadBtn = $("#btnUpload");
+        const $resetBtn = $("#btnReset");
+        const $dropArea = $("#dropArea");
+        const $progressBar = $(".progress");
+        const $progress = $(".progress-bar");
+        const $uploadInfo = $("#uploadInfo");
+        const $btnDownload = $("#btnDownloadTemplate");
+        const $notificationBadge = $("#notificationBadge");
+
+        let uploadedFileName = null;
+        let connection = null;
+
+        // Initialize SignalR connection
+        function initSignalR() {
+            connection = new signalR.HubConnectionBuilder()
+                .withUrl(baseUrl+"/progressHub")
+                .build();
+
+            connection.on("ReceiveProgress", function (percentage) {
+                console.log("Progress update:", percentage);
+                $progressBar.addClass("active").show();
+                $progress.css("width", percentage + "%").text(percentage + "%");
+                if (percentage === 100) {
+                    setTimeout(() => {
+                        $progressBar.removeClass("active").hide();
+                        $progress.css("width", "0%").text("0%");
+                    }, 1000);
+                }
+            });
+
+            connection.on("ReceiveMessageImport", function (user, message) {
+                console.log(`Message from ${user}: ${message}`);
+                $uploadInfo.append(`<p>Chat: ${user}: ${message}</p>`);
+            });
+
+            connection.on("UpdateBadge", function (count) {
+                console.log("Badge update:", count);
+                $notificationBadge.text(count).toggle(count > 0);
+            });
+
+            connection.start().catch(function (err) {
+                console.error("SignalR connection error:", err);
+                $uploadInfo.html("<p class='text-danger'>Failed to connect to progress updates.</p>");
+            });
+        }
+
+        function resetSteps() {
+            $steps.removeClass("active success error");
+            $stepWrappers.removeClass("line-active line-success");
+            $steps.eq(0).addClass("active");
+            $uploadInfo.html("");
+            uploadedFileName = null;
+            $fileInput.val("");
+            $uploadBtn.prop("disabled", true).css("opacity", "0.6");
+            $resetBtn.prop("disabled", false).css("opacity", "1");
+            $progressBar.removeClass("active").hide();
+            $progress.css("width", "0%").text("0%");
+        }
+
+        initSignalR();
+        resetSteps();
+
+        $btnDownload.click(function () {
+            window.location.href =baseUrl +"/dms/download-template";
+        });
+
+        function setStepState(index, state) {
+            if (state === "error" || state === "active") {
+                for (let i = index + 1; i < $steps.length; i++) {
+                    $steps.eq(i).removeClass("active success error");
+                    $stepWrappers.eq(i - 1).removeClass("line-active line-success");
+                }
+            }
+
+            $steps.eq(index).removeClass("active success error");
+            if (state !== "default") {
+                $steps.eq(index).addClass(state);
+            }
+
+            $stepWrappers.each(function (i) {
+                if (i < $steps.length - 1) {
+                    $(this).removeClass("line-active line-success");
+                    if ($steps.eq(i).hasClass("success")) {
+                        $(this).addClass("line-success");
+                    } else if ($steps.eq(i).hasClass("active")) {
+                        $(this).addClass("line-active");
+                    }
+                }
+            });
+        }
+
+        $fileInput.on("change", function () {
+            if (this.files.length > 0) {
+                if (!this.files[0].name.endsWith(".xlsx")) {
+                    setStepState(1, "error");
+                    $uploadInfo.html("<p class='text-danger'>Please select an .xlsx file.</p>");
+                    $uploadBtn.prop("disabled", true).css("opacity", "0.6");
+                    return;
+                }
+                $uploadBtn.prop("disabled", false).css("opacity", "1");
+                setStepState(0, "success");
+                setStepState(1, "active");
+                $uploadInfo.html("<p>File selected: <strong>" + this.files[0].name + "</strong></p>");
+            } else {
+                resetSteps();
+            }
+        });
+
+        $dropArea.on("dragenter dragover", function (e) {
+            e.preventDefault();
+            $(this).addClass("hover");
+        });
+        $dropArea.on("dragleave drop", function (e) {
+            e.preventDefault();
+            $(this).removeClass("hover");
+        });
+        $dropArea.on("drop", function (e) {
+            e.preventDefault();
+            $fileInput[0].files = e.originalEvent.dataTransfer.files;
+            $fileInput.trigger("change");
+        });
+
+        $uploadBtn.click(function () {
+            if (!$fileInput[0].files.length) {
+                setStepState(1, "error");
+                $uploadInfo.html("<p class='text-danger'>No file selected.</p>");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", $fileInput[0].files[0]);
+
+            setStepState(1, "success");
+            setStepState(2, "active");
+            $progressBar.addClass("active").show();
+            $progress.css("width", "0%").text("0%");
+            $uploadBtn.prop("disabled", true).css("opacity", "0.6");
+            $resetBtn.prop("disabled", true).css("opacity", "0.6");
+
+            $.ajax({
+                url:baseUrl+ "/dms/upload-template",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                xhr: function () {
+                    let xhr = $.ajaxSettings.xhr();
+                    if (xhr.upload) {
+                        xhr.upload.addEventListener("progress", function (e) {
+                            console.log("Upload progress event:", e);
+                            if (e.lengthComputable) {
+                                let percent = Math.round((e.loaded / e.total) * 100);
+                                $progress.css("width", percent + "%").text(percent + "%");
+                            } else {
+                                $progress.css("width", "50%").text("Uploading...");
+                            }
+                        }, false);
+                    } else {
+                        console.warn("xhr.upload not supported");
+                    }
+                    return xhr;
+                },
+                success: function (data) {
+                    console.log("Upload success:", data);
+                    uploadedFileName = data.fileName;
+                    setStepState(2, "success");
+                    setStepState(3, "active");
+                    $uploadInfo.html(`<p>File <strong>${uploadedFileName}</strong> uploaded successfully.</p>`);
+                    setTimeout(readFile, 1000);
+                },
+                error: function (xhr) {
+                    console.error("Upload error:", xhr);
+                    setStepState(2, "error");
+                    $uploadInfo.html(`<p class='text-danger'>Upload failed: ${xhr.responseJSON?.message || xhr.statusText || "Unknown error"}</p>`);
+                    alert("Upload failed: " + (xhr.responseJSON?.message || xhr.statusText || "Unknown error"));
+                },
+                complete: function () {
+                    $progressBar.removeClass("active").hide();
+                    $progress.css("width", "0%").text("0%");
+                    $uploadBtn.prop("disabled", false).css("opacity", "1");
+                    $resetBtn.prop("disabled", false).css("opacity", "1");
+                }
+            });
+        });
+
+        function readFile() {
+            if (!uploadedFileName) {
+                setStepState(3, "error");
+                $uploadInfo.html("<p class='text-danger'>No file to process.</p>");
+                return;
+            }
+
+            $uploadInfo.html("<p><i class='fa fa-spinner fa-spin'></i> Processing file...</p>");
+            $progressBar.addClass("active").show();
+            $progress.css("width", "0%").text("0%");
+
+            $.ajax({
+                url: baseUrl+ "/dms/read-template",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    fileName: uploadedFileName,
+                    createdBy: "SYSTEM",
+                    connectionId: connection.connectionId
+                }),
+                success: function (data) {
+                    console.log("Read success:", data);
+                    setStepState(3, "success");
+                    setStepState(4, "success");
+                    // $uploadInfo.html(`<p>File <strong>${uploadedFileName}</strong> processed successfully.</p>`);
+                    if(data.status=="Failed"){
+                        $uploadInfo.html(`<p style='color:red'>${data.message}</p>`);
+                    }
+                    else{
+                        $uploadInfo.html(`<p>${data.message}</p>`);
+                    }
+                },
+                error: function (xhr) {
+                    console.error("Read error:", xhr);
+                    setStepState(3, "error");
+                    $uploadInfo.html(`<p class='text-danger'>Read failed: ${xhr.responseJSON?.message || xhr.statusText || "Unknown error"} (${xhr.responseJSON?.error || ""})</p>`);
+                    //alert("Read file failed: " + (xhr.responseJSON?.message || xhr.statusText || "Unknown error"));
+                    $progressBar.removeClass("active").hide();
+                    $progress.css("width", "0%").text("0%");
+                }
+            });
+        }
+
+        $resetBtn.click(resetSteps);
+    });
+</script>

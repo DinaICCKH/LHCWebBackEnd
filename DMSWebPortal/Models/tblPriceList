@@ -1,0 +1,10 @@
+﻿namespace DMSWebPortal.Models
+{
+    public class tblPriceList
+    {
+        public int ListNum { get; set; }              // NOT NULL in SQL
+        public string? ListName { get; set; }         // nvarchar(50), nullable
+        public string? DocStatus { get; set; }        // nvarchar(15), nullable
+        public DateTime? UpdateDate { get; set; }     // datetime, nullable
+    }
+}

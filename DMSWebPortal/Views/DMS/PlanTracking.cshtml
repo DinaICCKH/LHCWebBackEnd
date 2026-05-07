@@ -1,0 +1,131 @@
+﻿@{
+    var salesList = ViewBag.saleslist as List<DMSWebPortal.Models.tblSalesEmployee>;
+    ViewBag.Title = "Plan Tracking";
+}
+<div class="row row-sub-page">
+    <div class="container-fluid container-sub-page">
+        <div class="row row-sub-page-header">
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-name">
+                <h6>Visit Plan</h6>
+            </div>
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-path">
+                <h6>Plan / Visit Plan</h6>
+            </div>
+        </div>
+        <div class="row row-sub-page-body">
+            <div class="col col-xxl-8 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 filter-container">
+                <div class="form-control combobox-container">
+                    <label for="combobox">Search by: *</label>
+                    <select id="combobox" class="combobox txt-search-by">
+                        <option value="" disabled>---select one---</option>
+                        <option value="All" selected>All</option>
+                        <option value="DocYear">Document Year</option>
+                        <option value="DocNum">Ducument Number</option>
+                        <option value="Salesman">Sales Name</option>
+                    </select>
+                </div>
+                <div class="form-control input-container" id="dv_general">
+                    <label for="textbox">Search: *</label>
+                    <input type="text" id="textbox" class="styled-input width-100 txt-search" placeholder="Typing here..." />
+                </div>
+                <div class="form-control input-container" id="dv_salesman" style="display:none">
+                    <label for="textbox">Select Salesman: </label>
+                    <select id="combobox_salesman" class="combobox">
+                        <option value="All">All</option>
+                        @foreach (var x in salesList)
+                        {
+                            <option value="@x.SlpCode" data-code="@x.U_SalesCode">@x.SalesName</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-control input-container">
+                    <label for="txtfromdate" class="">Form Date: </label>
+                    <input type="text" id="txtfromdate" class="styled-input datetime txt-from-date" placeholder="dd-mm-yyyy" value="01-01-1999" readonly />
+                </div>
+                <div class="form-control input-container">
+                    <label for="txttodate" class="">To Date: </label>
+                    <input type="text" id="txttodate" class="styled-input datetime txt-to-date" placeholder="dd-mm-yyyy" value="@(DateTime.Now.ToString("dd-MM-yyyy"))" readonly />
+                </div>
+                <div class="form-control combobox-container">
+                    <label for="combobox">Show Per Page: *</label>
+                    <select id="combobox" class="combobox txt-limit">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100" selected>100</option>
+                        <option value="500">500</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                <div class="table-container">
+                    <table class="styled-table table-bordered table table-item">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Document Number</th>
+                                <th>Sales Code</th>
+                                <th>Sales Name</th>
+                                <th>Year</th>
+                                <th>Created Date</th>
+                                <th>Created By</th>
+                                <th>Remark</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                <div class="pagination">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        GetPlanTrackingList(1);
+        $(".txt-limit").change(function () {
+            limit = $(this).val();
+            GetPlanTrackingList(1);
+        });
+        $(".txt-search").keyup(function () {
+            GetPlanTrackingList(1);
+        });
+        $(".txt-search").keydown(function () {
+            GetPlanTrackingList(1);
+        });
+        $(".txt-from-date").change(function () {
+            GetPlanTrackingList(1);
+        });
+        $(".txt-to-date").change(function () {
+            GetPlanTrackingList(1);
+        });
+        $(".txt-status").change(function () {
+            SearGetPlanTrackingListchSOList(1);
+        });
+        // $(".txt-search-by").change(function () {
+        //     GetPlanTrackingList(1);
+        // });
+        $(".txt-search-by").change(function () {
+            if($(".txt-search-by").val()=="Salesman"){
+                $("#dv_general").hide();
+                $("#dv_salesman").show();
+            }
+            else{
+                $("#dv_general").show();
+                $("#dv_salesman").hide();
+            }
+            GetPlanTrackingList(1);
+        });
+        $("#combobox_salesman").change(function () {
+            GetPlanTrackingList(1);
+        });
+    });
+</script>
+

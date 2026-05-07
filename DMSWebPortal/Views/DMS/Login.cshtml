@@ -1,0 +1,261 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = null;
+
+    var baseUrl = UrlHelper.GetBaseUrl(Context);
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    <!-- CSS & Libs -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="~/lib/flatpicker/flatpicker.min.css" rel="stylesheet" />
+
+    <!-- JS -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	<script src="~/js/jwtservice.js"></script>
+    <script src="~/js/dms.js" asp-append-version="true"></script>
+    <script src="~/lib/flatpicker/flatpicker.js" asp-append-version="true"></script>
+
+    <style>
+        body {
+            background-image: url("../assets/Login_Background.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container-login {
+            min-height: 100vh;
+            height: 100vh;
+            min-width: 90% !important;
+            max-width: 90% !important;
+        }
+
+        .row-container-login {
+            height: 100%;
+        }
+
+        .col-block-left, .col-block-righ {
+            padding: 30px;
+            height: 100%;
+        }
+
+        .col-block-title {
+            height: 100%;
+            position: relative;
+        }
+
+        .box-login-title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            column-gap: 20px;
+        }
+
+        .circle-lock-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            color: white;
+            background-color: #00000046;
+            font-size: 28px;
+        }
+
+        .login-title-text {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .reference-by {
+            color: silver;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .col-block-card {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box-login-card {
+            background-color: white;
+            width: 100%;
+            height: auto;
+            max-width: 450px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .login-card-header {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--theme-color);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--theme-color);
+        }
+
+        .login-card-body {
+            padding: 30px;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .input-group {
+            width: 100% !important;
+            align-items: center;
+        }
+
+        .input-icon {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #007bff;
+            background-color: #007bff;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .txt {
+            border: 1px solid silver;
+            padding: 5px;
+            min-width: calc(100% - 45px) !important;
+            color: gray;
+            font-size: 15px;
+            height: 45px;
+        }
+
+            .txt:focus {
+                border-color: var(--focus-color);
+                outline: none;
+                box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.2);
+            }
+
+        .btn-login {
+            border-radius: 5px !important;
+            width: 100%;
+            height: 45px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container container-login">
+        <div class="row row-container-login">
+            <div class="col col-lg-6 col-md-6 col-sm-12 col-block-left">
+                <div class="col-block-title">
+                    <div class="box-login-title">
+                        <div class="circle-lock-box">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <div class="login-title-text">
+                            DMS WEB PORTAL LOGIN SYSTEM
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-lg-6 col-md-6 col-sm-12 col-block-righ">
+                <div class="col-block-card">
+                    <div class="box-login-card">
+                        <div class="login-card-header">Login</div>
+                        <div class="login-card-body">
+                            <form id="loginForm" enctype="multipart/form-data">
+                                <div class="mb-3">
+                                    <label for="usercode" class="form-label">User Name</label>
+                                    <div class="input-group">
+                                        <span class="input-icon">
+                                            <i class="fa-solid fa-user"></i>
+                                        </span>
+                                        <input type="text" id="usercode" class="txt txt-usercode form-control" placeholder="Enter username" required />
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <div class="input-group">
+                                        <span class="input-icon">
+                                            <i class="fa-solid fa-lock"></i>
+                                        </span>
+                                        <input type="password" id="password" class="txt txt-password form-control" placeholder="Enter password" required />
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <button type="submit" class="btn btn-primary btn-login">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading" style="width: 100%; background-color: #00000078 !important; height: 100%; position: fixed; z-index: 100; left: 0; top: 0;display:flex;justify-content:center;align-items:center;">
+        <div class="img-box-loading" style="width:300px;height:180px;border-radius:10px;">
+            <img src="~/assets/loading.gif" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;" />
+        </div>
+    </div>
+
+    <script>
+        baseUrl = '@baseUrl';
+        console.log(baseUrl);
+        $(document).ready(function () {
+            $("#loginForm").submit(function (e) {
+                e.preventDefault();
+                GetLogin();
+            });
+        });
+
+                function GetLogin() {
+            var usercode = $(".txt-usercode").val();
+            var password = $(".txt-password").val();
+
+            callApi({
+                dataType: 'json',
+                type: 'GET',
+                url: baseUrl + `/api/auth/login?uSalesCode=${encodeURIComponent(usercode)}&uSecret=${encodeURIComponent(password)}&uDeviceID=0&uClientType=Web`,
+                beforeSend: function () {
+                    $(".loading").show();
+                },
+                complete: function () {
+                    $(".loading").hide();
+                },
+                success: function (data) {
+                    localStorage.setItem("UserData", JSON.stringify(data.User));
+                    localStorage.setItem("AccessToken", data.AccessToken);
+                    localStorage.setItem("RefreshToken", data.RefreshToken);
+                    GoHomePage();
+                },
+                error: function (error) {
+                    console.log(error);
+                    alert("Error: " + error.responseText);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+﻿@model IEnumerable<DMSWebPortal.Models.Reason>
+@{
+    ViewBag.Title = "Sale Employee List";
+}
+<div class="row row-sub-page">
+    <div class="container-fluid container-sub-page">
+        <div class="row row-sub-page-header">
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-name">
+                <h6>Reason List</h6>
+            </div>
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-path">
+                <h6>Administrator / Reason List</h6>
+            </div>
+        </div>
+        <div class="row row-sub-page-body">
+            <div class="col col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 filter-container">
+                <div class="form-control combobox-container">
+                    <label for="combobox">Search by: *</label>
+                    <select id="combobox" class="combobox txt-search-by">
+                        <option value="" disabled>Select One</option>
+                        <option value="All" selected>All</option>
+                    </select>
+                </div>
+                <div class="form-control input-container">
+                    <label for="textbox">Search: *</label>
+                    <input type="text" id="textbox" class="styled-input txt-search" name="search" placeholder="Typing here..." onkeydown="GetReasonList(1)" onkeyup="GetReasonList(1)" />
+                </div>
+                <div class="form-control btn-container">
+                    <label for="textbox">&nbsp;</label>
+                    @* <div class="btn btn-add-reason"><i class="fa-solid fa-plus"></i>&nbsp;Add New Reason</div> *@
+                    <button class="btn btn-primary btn-add-reason mb-3" id="btn-add-reason">
+                        <i class="fa-solid fa-plus"></i> Add New Reason
+                    </button>
+                </div>
+            </div>
+            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                <div class="table-container">
+                    <table class="styled-table table-bordered table table-reason">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Code</th>
+                                <th>Reason EN</th>
+                                <th>Reason KH</th>
+                                <th>Create By</th>
+                                <th>Create Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @* @{
+                                int no = 1;
+                                foreach (var r in Model)
+                                {
+                                    <tr>
+                                        <td>@no</td>
+                                        <td class="td-reason-code">@r.Code</td>
+                                        <td class="td-reason-en">@r.Reason1</td>
+                                        <td class="td-reason-kh">@r.ReasonKH</td>
+                                        <td class="td-createdby-name">Manager</td>
+                                        <td class="td-createddate">@r.CreatedDate?.ToString("dd-MM-yyyy")</td>
+                                        <td class="td-reason-status">
+                                            <div class="badge bg-@(r.Status == "Active" ? "success" : "danger")" role="alert">
+                                                @(r.Status ?? "NON")
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="btn p-0 btn-edit-reason" style="color:green;"><i class="fa-solid fa-pen-to-square"></i></div>
+                                        </td>
+                                    </tr>
+                                    no++;
+                                }
+                            } *@
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                <div class="pagination">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Reason Modal -->
+<div class="modal fade" id="reasonModal" tabindex="-1" aria-labelledby="reasonModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog">
+        <div class="modal-content modal-box">
+
+            <!-- Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="reasonModalLabel">Reason</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="pop-customer-body">
+                <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+
+                    <div class="input-container flex-row group-code" style="display:none;">
+                        <label class="width-30">Code: *</label>
+                        <input type="text" class="styled-input width-70 txt-reason-code" readonly>
+                    </div>
+
+                    <div class="input-container flex-row">
+                        <label class="width-30">Reason EN: *</label>
+                        <input type="text" class="styled-input width-70 txt-reason-en">
+                    </div>
+
+                    <div class="input-container flex-row">
+                        <label class="width-30">Reason KH: *</label>
+                        <input type="text" class="styled-input width-70 txt-reason-kh">
+                    </div>
+
+                    <div class="input-container flex-row">
+                        <label class="width-30">Status: </label>
+                        <select class="combobox width-70 txt-reason-status">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="pop-customer-bottom">
+                <button class="btn btn-primary  btn-add-customer" id="btn-save-reason">
+                    <i class="fa fa-save"></i> Save Change
+                </button>
+                <button class="btn btn-secondary btn-cancel-customer" data-bs-dismiss="modal">
+                    <i class="fa fa-remove"></i> Cancel
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        GetReasonList(1);
+    });
+</script>
+
+

@@ -1,0 +1,243 @@
+﻿@{
+    ViewBag.Title = "User List";
+    List<tblSalesEmployee> salesEmployees = ViewBag.sales;
+    List<User> user = ViewBag.user;
+}
+<div class="row row-sub-page">
+    <div class="container-fluid container-sub-page">
+        <div class="row row-sub-page-header">
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-name">
+                <h6>User List</h6>
+            </div>
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-path">
+                <h6>Administrator / User List</h6>
+            </div>
+        </div>
+        <div class="row row-sub-page-body">
+            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 filter-container">
+                <div class="form-control combobox-container">
+                    <label for="combobox">Status: *</label>
+                    <select id="combobox" class="combobox txt-status">
+                        <option value="" disabled>---select one---</option>
+                        <option value="All" selected>All</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="form-control combobox-container">
+                    <label for="combobox">Search by: *</label>
+                    <select id="combobox" class="combobox txt-search-by">
+                        <option value="" disabled>---select one---</option>
+                        <option value="All" selected>All</option>
+                        <option value="Code">Code</option>
+                        <option value="Name">Name</option>
+                        <option value="Company">Customer Name</option>
+                        <option value="UserType">User Type</option>
+                    </select>
+                </div>
+                <div class="form-control combobox-container">
+                    <label for="combobox">User Type: *</label>
+                    <select id="combobox" class="combobox txt-search-user-type">
+                        <option value="" disabled>---select one---</option>
+                        <option value="All" selected>All</option>
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
+                    </select>
+                </div>
+                <div class="form-control input-container" id="dv_general">
+                    <label for="textbox">Search: *</label>
+                    <input type="text"
+                           id="txt-search-user"
+                           class="styled-input width-100 txt-search"
+                           name="search_random_987654"
+                           autocomplete="new-password"
+                           readonly
+                           onfocus="this.removeAttribute('readonly');"
+                           placeholder="Typing here..." />
+                </div>
+                
+                <div class="form-control combobox-container">
+                    <label for="combobox">Show Per Page: *</label>
+                    <select id="combobox" class="combobox txt-limit">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20"selected>20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+                <div class="form-control btn-container">
+                    <label for="textbox">&nbsp;</label>
+                    <button class="btn btn-primary btn-add-user mb-3">
+                        <i class="fa-solid fa-plus"></i> Add New User
+                    </button>
+                </div>
+            </div>
+
+            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                <div class="table-container">
+                    <table class="styled-table table-bordered table table-user">
+                        <thead>
+                            <tr>
+                                <th width="5%">No</th>
+                                <th width="8%">Profile</th>
+                                <th width="10%">User Code</th>
+                                <th>User Name</th>
+                                <th>Sales Name</th>
+                                <th width="8%">User Type</th>
+                                <th width="12%">Manager Name</th>
+                                <th width="8%">Status</th>
+                                <th width="6%">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <!-- Pagination -->
+            <div class="col-12 mt-3">
+                <div class="pagination">
+                    <!-- dynamic pagination -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Customer List Modal -->
+<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+
+            <!-- Header -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="userModalLabel">User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                    <div class="input-container flex-row">
+                        <label for="usercode" class="width-30">User Code: *</label>
+                        <input type="text" id="usercode" class="styled-input width-70 txt-user-code" placeholder="User Code" value="">
+                        <input type="hidden" class="styled-input width-70 txt-mode" />
+                    </div>
+                    <div class="input-container flex-row">
+                        <label for="username" class="width-30">User Name: *</label>
+                        <input type="text" id="username" class="styled-input width-70 txt-user-name" placeholder="User Name" value="">
+                    </div>
+                    @* <div class="input-container flex-row">
+                        <label for="company" class="width-30">Company: *</label>
+                        <input type="text" id="company" class="styled-input width-70 txt-company-name" placeholder="Company" value="">
+                    </div> *@
+                    <div class="input-container flex-row block-user-type">
+                        <label for="usertype" class="width-30">User Type: *</label>
+                        <select id="usertype" class="combobox width-70 txt-user-type">
+                            <option value="Web">Web User</option>
+                            <option value="App">App User</option>
+                            <option value="Both">Both</option>
+                        </select>
+                    </div>
+                    <div class="input-container flex-row">
+                        <label for="deviceid" class="width-30">Device ID: </label>
+                        <input type="text" class="styled-input width-70 txt-device-id" placeholder="Device ID" value="">
+                    </div>
+                    <div class="input-container flex-row">
+                        <label for="usertype" class="width-30">Link SAP Sales Code:</label>
+                        <select id="usertype" class="combobox width-70 txt-sales-employee">
+                            <option value="-2"></option>
+                            @foreach (var x in salesEmployees)
+                            {
+                                <option value="@x.SlpCode">@x.SalesName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="input-container flex-row">
+                        <label for="usertype" class="width-30">Manager Code:</label>
+                        <select id="usertype" class="combobox width-70 txt-manager">
+                            <option value=""></option>
+                            @foreach (var x in user)
+                            {
+                                <option value="@x.Code">@x.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="input-container flex-row">
+                        <label for="usertype" class="width-30">Closed End of Day:</label>
+                        <select id="usertype" class="combobox width-70 txt-closed-end-of-day">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+                    <div class="input-container flex-row block-user-status">
+                        <label for="status" class="width-30">Status: </label>
+                        <select id="status" class="combobox width-70 txt-user-status">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="input-container flex-row">
+                        <label for="deviceid" class="width-30">Printer Name: </label>
+                        <input type="text" class="styled-input width-70 txt-printer-name" placeholder="Printer Name" value="">
+                    </div>
+                    <div class="input-container flex-row">
+                        <label for="deviceid" class="width-30">Printer Mac: </label>
+                        <input type="text" class="styled-input width-70 txt-printer-mac" placeholder="Printer Mac" value="">
+                    </div>
+                    <div class="input-container flex-row">
+                        <label for="profile" class="width-30">Profile: </label>
+                        <div class="box-btn-choose">
+                            <input id="profile" class="btn-user-file" type="file" accept="image/*" />
+                        </div>
+                    </div>
+                    <div class="input-container flex-row block-checkbox-password">
+                        <label for="checkpassword" class="width-30">Change Password: </label>
+                        <input type="checkbox" id="checkpassword" class="checkbox-change-password">
+                    </div>
+                    <div class="input-container flex-row password-group">
+                        <label for="password" class="width-30">Password: </label>
+                        <input type="password" id="password" class="styled-input width-70 txt-user-password" placeholder="Password" autocomplete="on">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer">
+                <button class="btn btn-primary  btn-add-customer" id="btn-save-user">
+                    <i class="fa fa-save"></i> Save Change
+                </button>
+                <button class="btn btn-secondary btn-cancel-customer" data-bs-dismiss="modal">
+                    <i class="fa fa-remove"></i> Cancel
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        GetUserList(1);
+        $(".txt-user-code").change(function(){
+            CheckUser($(".txt-user-code").val());
+        });
+        $(".txt-limit").change(function () {
+            GetUserList(1);
+        });
+        $(".txt-search").keyup(function () {
+            GetUserList(1);
+        });
+        $(".txt-search").keydown(function () {
+            GetUserList(1);
+        });
+        $(".txt-status").change(function () {
+            GetUserList(1);
+        });
+         $(".txt-search-user-type").change(function () {
+            GetUserList(1);
+        });
+    });
+</script>
+
+

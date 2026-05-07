@@ -1,0 +1,476 @@
+﻿@{
+    ViewBag.Title = "BP Request";
+    tblBPRequest bp = ViewBag.bp ?? new tblBPRequest();
+    List<tblBPGroup> bpgroup = ViewBag.group ?? new List<tblBPGroup>();
+    List<tblPayment> paymentterm = ViewBag.payment ?? new List<tblPayment>();
+    List<tblPriceList> priceLists = ViewBag.pricelist ?? new List<tblPriceList>();
+    List<v_Province> provinces = ViewBag.province ?? new List<v_Province>();
+    List<tblSubGroup> subgroup = ViewBag.subgroup ?? new List<tblSubGroup>();
+    List<tblGrade> grade = ViewBag.grade ?? new List<tblGrade>();
+    List<tblRegional> regional = ViewBag.regional ?? new List<tblRegional>();
+    List<tblSalesEmployee> salelist = ViewBag.salelist ?? new List<tblSalesEmployee>();
+
+    string statusClass = "status-draft";
+
+    switch (bp.Status)
+    {
+        case "Approved":
+            statusClass = "status-approved";
+            break;
+        case "Rejected":
+            statusClass = "status-rejected";
+            break;
+        case "Pending":
+            statusClass = "status-pending";
+            break;
+        case "Cancelled":
+            statusClass = "status-cancelled";
+            break;
+    }
+}
+
+<style>
+    body {
+        background: #f5f6fa;
+    }
+    .page-container {
+        background: #fff;
+        padding: 15px 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        font-size: 13px;
+        border-radius:5px;
+    }
+
+    /* Header */
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e5e5e5;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+        .page-header h6 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+    .status-badge {
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        display: inline-block;
+    }
+
+    .status-draft {
+        background: #e9ecef;
+        color: #495057;
+    }
+
+    .status-approved {
+        background: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .status-rejected {
+        background: #f8d7da;
+        color: #842029;
+    }
+
+    .status-pending {
+        background: #fff3cd;
+        color: #664d03;
+    }
+
+    .status-cancelled {
+        background: #e2e3e5;
+        color: #41464b;
+    }
+
+
+    /* Form */
+    .form-label {
+        font-weight: 500;
+        margin-bottom: 3px;
+    }
+
+    .form-control, .form-select {
+        border-radius: 6px;
+        padding: 6px 8px;
+        font-size: 13px;
+    }
+
+    textarea.form-control {
+        resize: none;
+    }
+
+    .section-title {
+        font-weight: 600;
+        font-size: 14px;
+        margin: 15px 0 10px;
+        border-bottom: 1px solid #2984D1;
+        padding-bottom: 5px;
+    }
+
+    /* Footer */
+    .footer {
+        margin-top:20px;
+        display: flex;
+        flex-direction:row;
+        justify-content: flex-end;
+        column-gap:10px;
+    }
+    /* Customer Photo */
+    .photo-box {
+        border: 1px dashed #ccc;
+        border-radius: 6px;
+        height: 200px;
+        width: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fafafa;
+        cursor: pointer;
+    }
+
+        .photo-box img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 6px;
+        }
+
+    .photo-placeholder {
+        text-align: center;
+        color: #999;
+        font-size: 12px;
+    }
+
+        .photo-placeholder i {
+            font-size: 32px;
+            display: block;
+            margin-bottom: 5px;
+        }
+</style>
+
+<div class="page-container">
+    <input type="hidden" id="txt-docentry" value="@bp.DocEntry"/>
+    <!-- HEADER -->
+    <div class="page-header">
+        <h6><i class="bi bi-people-fill fw-bold"></i> Customer Register</h6>
+        <div>
+            <span class="status-badge" id="txt-latelong">
+                GPS:   @Html.Raw(string.IsNullOrEmpty(bp.GPSLateLong) ? "<b>-</b>" : bp.GPSLateLong)
+            </span>
+            <span class="status-badge @statusClass" id="txt-docstatus">
+                @bp.Status
+            </span>
+
+            <span class="ms-2 text-muted" id="txt-sapnum">
+                SAP No: @Html.Raw(string.IsNullOrEmpty(bp.CardCode) ? "<b>-</b>" : bp.CardCode)
+            </span>
+        </div>
+    </div>
+
+
+    <!-- BASIC INFO -->
+    <div class="section-title">Basic Information</div>
+    <div class="row g-2">
+
+        <!-- LEFT FORM -->
+        <div class="col-md-9">
+            <div class="row g-2">
+                <div class="col-md-4">
+                    <label class="form-label">Customer Code</label>
+                    <input class="form-control" id="txt-cardcode" value="@bp.CardCode" readonly/>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label required-field">Customer Name</label>
+                    <input class="form-control" id="txt-cardname" value="@bp.CardName" />
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label required-field">Foreign Name</label>
+                    <input class="form-control" id="txt-cardfname" value="@bp.CardFName" />
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label required-field">Phone1</label>
+                    <input class="form-control" id="txt-phone1" value="@bp.Phone1" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Phone2</label>
+                    <input class="form-control" id="txt-phone2" value="@bp.Phone2" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Phone3</label>
+                    <input class="form-control" id="txt-phone3" value="@bp.Phone3" />
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label required-field">Group</label>
+                    <select class="form-select" id="txt-group">
+                        <option value="" selected></option>
+                        @foreach (var x in bpgroup)
+                        {
+                            if (x.GroupCode == bp.GroupCode)
+                            {
+                                <option value="@x.GroupCode" selected>@x.GroupName</option>
+                            }
+                            else
+                            {
+                                <option value="@x.GroupCode">@x.GroupName</option>
+                            }
+                           
+                        }
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label required-field">SubGroup</label>
+                    <select class="form-select" id="txt-subgroup">
+                        <option value="" selected></option>
+                        @foreach (var x in subgroup)
+                        {
+                            if (x.Code == bp.SubGroup)
+                            {
+                                <option value="@x.Code" selected>@x.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@x.Code">@x.Name</option>
+                            }
+
+                        }
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label required-field">Grade</label>
+                    <select class="form-select" id="txt-grade">
+                        <option value="" selected></option>
+                        @foreach (var x in grade)
+                        {
+                            if (x.Code == bp.Grade)
+                            {
+                                <option value="@x.Code" selected>@x.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@x.Code">@x.Name</option>
+                            }
+
+                        }
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label required-field">Payment Term</label>
+                    <select class="form-select" id="txt-term">
+                        <option value="" selected></option>
+                        @foreach (var x in paymentterm)
+                        {
+                            if (x.TermCode == bp.TermCode)
+                            {
+                                <option value="@x.TermCode" selected>@x.TermName</option>
+                            }
+                            else
+                            {
+                                <option value="@x.TermCode">@x.TermName</option>
+                            } 
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label required-field">Price List</label>
+                    <select class="form-select" id="txt-pricelist">
+                        <option value="" selected></option>
+                        @foreach (var x in priceLists)
+                            if (x.ListNum == bp.DefPriceListCode)
+                            {
+                                <option value="@x.ListNum" selected>@x.ListName</option>
+                            }
+                            else
+                            {
+                                <option value="@x.ListNum">@x.ListName</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">VATIN</label>
+                    <input class="form-control" id="txt-vatno" value="@bp.VATNo" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label required-field">Regional</label>
+                    <select class="form-select" id="txt-regional">
+                        <option value="" selected></option>
+                        @foreach (var x in regional)
+                            if (x.RegionalCode == bp.Region)
+                            {
+                                <option value="@x.RegionalCode" selected>@x.RegionalName</option>
+                            }
+                            else
+                            {
+                                <option value="@x.RegionalCode">@x.RegionalName</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label required-field">Sales Name</label>
+                    <select class="form-control" id="txt-salescode" disabled readonly>
+                        <option value="" selected></option>
+                        @foreach (var x in salelist)
+                            if (x.U_SalesCode == bp.SalesCode)
+                            {
+                                <option value="@x.U_SalesCode" selected>@x.SalesName</option>
+                            }
+                            else
+                            {
+                                <option value="@x.U_SalesCode">@x.SalesName</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT PHOTO -->
+        <div class="col-md-3 d-flex justify-content-center align-items-start">
+            <div>
+                <label class="form-label text-center d-block required-field">Customer Photo</label>
+                <div class="photo-box">
+                   
+                    @if (string.IsNullOrEmpty(bp.ImagePath))
+                    {
+                        <!-- When no photo -->
+                        <div class="photo-placeholder">
+                            <i class="bi bi-person-circle"></i>
+                            Upload Photo
+                        </div>
+                    }
+                    else
+                    {
+                        <!-- When photo exists -->
+                        <img src="@Url.Content("~" + bp.ImagePath)"
+                             class="customer-photo"
+                             alt="Customer Photo" />
+                    }
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ADDRESS -->
+    <div class="section-title">Address</div>
+    <div class="row g-2">
+        <div class="col-md-3">
+            <label class="form-label required-field">Province</label>
+            <select class="form-select" id="txt-procode" data-procode="@bp.ProCode" >
+                <option value=""></option>
+                @foreach(var x in provinces)
+                {
+                    if (x.ProCode == bp.ProCode)
+                    {
+                        <option value="@x.ProCode" selected>@x.ProENName - @x.ProKHName</option>
+                    }
+                    else
+                    {
+                        <option value="@x.ProCode">@x.ProENName - @x.ProKHName</option>
+                    }
+                }
+                
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label required-field">District</label>
+            <select class="form-select" id="txt-discode" data-discode="@bp.DisCode">
+                
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label required-field">Commune</label>
+            <select class="form-select" id="txt-comcode" data-comcode="@bp.ComCode">
+               
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label required-field">Village</label>
+            <input class="form-control" value="@bp.VilName" id="txt-village" />
+        </div>
+
+        <div class="col-md-12">
+            <label class="form-label required-field">Full Address EN</label>
+            <textarea class="form-control" id="txt-fulladdress-en" rows="2" readonly>@bp.FullAddEN?.Trim()</textarea>
+        </div>
+        <div class="col-md-12">
+            <label class="form-label required-field">Full Address KH</label>
+            <textarea class="form-control" id="txt-fulladdress-kh" rows="2" readonly>@bp.FullAddKH?.Trim()</textarea>
+        </div>
+    </div>
+
+    <!-- NOTES -->
+    <div class="section-title">Remark</div>
+    <textarea class="form-control" id="txt-remark" rows="2"></textarea>
+    <div class="section-title">Error Log</div>
+    <textarea class="form-control" rows="2" id="txt-lasterror" readonly>
+        @bp.LastError
+    </textarea>
+    <!-- FOOTER -->
+    <div class="footer">
+        @if (bp.Status == null && bp.DocEntry == 0)
+        {
+            <button class="btn btn-primary" id="btn-save-bp">Submit</button>
+        }
+        @if (bp.Status == "Draft")
+        {
+            <button class="btn btn-primary" id="btn-save-bp">Save Change</button>
+            <button class="btn btn-success" id="btn-approve-bp">Approve</button>
+            <button class="btn btn-danger" id="btn-reject-bp">Reject</button>
+        }
+        
+    </div>
+
+</div>
+<div class="modal fade" id="photoModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Customer Photo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="photoModalImg" class="img-fluid rounded" />
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        $(document).ready(function () {
+
+        // --- INITIALIZATION ON PAGE LOAD ---
+        const defaultProCode = $("#txt-procode").data("procode");
+        const defaultDisCode = $("#txt-discode").data("discode");
+        const defaultComCode = $("#txt-comcode").data("comcode");
+
+        if (defaultProCode) {
+            loadDistricts(defaultProCode, defaultDisCode);
+        }
+        if (defaultDisCode) {
+            loadCommunes(defaultDisCode, defaultComCode);
+        }
+        // **Do not load address on page load**
+    });
+    $(document).on("click", ".customer-photo", function () {
+        const src = $(this).attr("src");
+        $("#photoModalImg").attr("src", src);
+        $("#photoModal").modal("show");
+    });
+        
+</script>

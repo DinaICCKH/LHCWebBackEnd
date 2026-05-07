@@ -1,0 +1,47 @@
+﻿{
+  "Timestamp": "2026-03-19 13:33:56",
+  "DocType": "BPRequest",
+  "RequestData": {
+    "AppCode": 0,
+    "BPEntry": 0,
+    "SalesCode": "string",
+    "CardName": "Veasna",
+    "CardFName": "Veasna",
+    "VATNo": "Veasna",
+    "VATImage": "Veasna",
+    "ContactPer": "Veasna",
+    "GroupCode": 0,
+    "Channel": "Veasna",
+    "TermCode": 0,
+    "Phone1": "029302930",
+    "Phone2": "02940293",
+    "Phone3": "0293029403",
+    "Email": "veasna@gmail.com",
+    "ProCode": "string",
+    "DisCode": "string",
+    "ComCode": "string",
+    "VilName": "string",
+    "HouseNo": "string",
+    "StreetNo": "string",
+    "FullAddKH": "string",
+    "FullAddEN": "string",
+    "GPSLateLong": "string",
+    "ImageUrlServer": "string",
+    "AddressCode": "string",
+    "Image": {
+      "ContentDisposition": "form-data; name=\"Image\"; filename=\"DSC05324.jpg\"",
+      "ContentType": "image/jpeg",
+      "Headers": {
+        "Content-Disposition": [
+          "form-data; name=\"Image\"; filename=\"DSC05324.jpg\""
+        ],
+        "Content-Type": [
+          "image/jpeg"
+        ]
+      },
+      "Length": 4852774,
+      "Name": "Image",
+      "FileName": "DSC05324.jpg"
+    }
+  }
+}

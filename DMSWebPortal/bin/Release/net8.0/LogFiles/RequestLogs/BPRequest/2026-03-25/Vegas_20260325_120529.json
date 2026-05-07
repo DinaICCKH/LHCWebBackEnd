@@ -1,0 +1,43 @@
+﻿{
+  "AppCode": 1,
+  "BPEntry": -1,
+  "SalesCode": "S01",
+  "CardName": "Vegas",
+  "CardFName": "Ben Affleck",
+  "VATNo": null,
+  "VATImage": null,
+  "ContactPer": null,
+  "GroupCode": null,
+  "Channel": null,
+  "TermCode": null,
+  "Phone1": "027638282",
+  "Phone2": "077282928",
+  "Phone3": "0272615588",
+  "Email": null,
+  "ProCode": "KKG",
+  "DisCode": "090200",
+  "ComCode": "090202",
+  "VilName": "beautiful and using the same",
+  "HouseNo": null,
+  "StreetNo": null,
+  "FullAddKH": "ឃុំ ភ្ញីមាស, ស្រុក គិរីសាគរ, ខេត្ត កោះកុង",
+  "FullAddEN": "Phnhi Meas Commune, Kiri Sakor District, Koh Kong",
+  "GPSLateLong": "11.5564,104.9282",
+  "ImageUrlServer": null,
+  "AddressCode": "090202",
+  "Image": {
+    "ContentDisposition": "form-data; name=\"Image\"; filename=\"7d6f7ae4-a1e2-4a32-bc7e-c4c74fafbe789114444340671071555.jpg\"",
+    "ContentType": "application/octet-stream",
+    "Headers": {
+      "content-type": [
+        "application/octet-stream"
+      ],
+      "content-disposition": [
+        "form-data; name=\"Image\"; filename=\"7d6f7ae4-a1e2-4a32-bc7e-c4c74fafbe789114444340671071555.jpg\""
+      ]
+    },
+    "Length": 1755337,
+    "Name": "Image",
+    "FileName": "7d6f7ae4-a1e2-4a32-bc7e-c4c74fafbe789114444340671071555.jpg"
+  }
+}

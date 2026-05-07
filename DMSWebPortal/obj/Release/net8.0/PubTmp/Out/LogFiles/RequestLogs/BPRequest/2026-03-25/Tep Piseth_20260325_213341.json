@@ -1,0 +1,43 @@
+﻿{
+  "AppCode": 2,
+  "BPEntry": -1,
+  "SalesCode": "Manager",
+  "CardName": "Tep Piseth",
+  "CardFName": "Tep Piseth",
+  "VATNo": null,
+  "VATImage": null,
+  "ContactPer": null,
+  "GroupCode": null,
+  "Channel": null,
+  "TermCode": null,
+  "Phone1": null,
+  "Phone2": null,
+  "Phone3": null,
+  "Email": null,
+  "ProCode": "KPT",
+  "DisCode": "070200",
+  "ComCode": "070207",
+  "VilName": "Very much",
+  "HouseNo": null,
+  "StreetNo": null,
+  "FullAddKH": "ឃុំ ស្ដេចគង់ខាងលិច, ស្រុក បន្ទាយមាស, ខេត្ត កំពត",
+  "FullAddEN": "Sdach Kong Khang lech Commune, Banteay Meas District, Kampot",
+  "GPSLateLong": "11.5057309,104.7756007",
+  "ImageUrlServer": null,
+  "AddressCode": "070207",
+  "Image": {
+    "ContentDisposition": "form-data; name=\"Image\"; filename=\"1c216493-27e4-4f90-9ade-8a4b63779ae14587644499129464417.jpg\"",
+    "ContentType": "application/octet-stream",
+    "Headers": {
+      "content-type": [
+        "application/octet-stream"
+      ],
+      "content-disposition": [
+        "form-data; name=\"Image\"; filename=\"1c216493-27e4-4f90-9ade-8a4b63779ae14587644499129464417.jpg\""
+      ]
+    },
+    "Length": 1348486,
+    "Name": "Image",
+    "FileName": "1c216493-27e4-4f90-9ade-8a4b63779ae14587644499129464417.jpg"
+  }
+}

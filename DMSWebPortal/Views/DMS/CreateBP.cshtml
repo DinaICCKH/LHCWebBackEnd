@@ -1,0 +1,131 @@
+﻿
+
+@{
+    ViewBag.Title = "BP Creation";
+    string code = ViewBag.code;
+}
+<div class="hidden-feild" style="display:none;">
+    <input type="hidden" id="txt-code" value="@code" />
+</div>
+<div class="row row-sub-page">
+    <div class="container-fluid container-sub-page">
+        <div class="row row-sub-page-header">
+            <div class="col col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 col-page-name">
+                <h6>BP Request Update</h6>
+            </div>
+        </div>
+        <div class="row row-sub-page-body">
+            <div class="col col-xxl-4 col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-30">Code: *</label>
+                    <input type="text" id="textbox" class="styled-input width-70 txt-bp-code" placeholder="Code" value="" readonly />
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-30">Name: *</label>
+                    <input type="text" id="textbox" class="styled-input width-70 txt-bp-name" placeholder="Name" value="" />
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-30">Foreign Name: *</label>
+                    <input type="text" id="textbox" class="styled-input width-70 txt-bp-fname" placeholder="Name" value="" />
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-30">VATIN:</label>
+                    <input type="text" id="textbox" class="styled-input width-70 txt-bp-vat" placeholder="VATIN" />
+                </div>
+                <div class="input-container flex-row">
+                    <label for="combobox" class="width-30">Group: *</label>
+                    <select id="combobox" class="combobox width-70 txt-bp-group">
+                    </select>
+                </div>
+                <div class="input-container flex-row">
+                    <label for="combobox" class="width-30">Channel: *</label>
+                    <select id="combobox" class="combobox width-70 txt-bp-channel">
+                    </select>
+                </div>
+                <div class="input-container flex-row">
+                    <label for="combobox" class="width-30">Phone: </label>
+                    <input type="text" id="textbox" class="styled-input width-70 txt-bp-phone" placeholder="Phone" value="" />
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-30">Term Code: *</label>
+                    @*<input type="text" id="textbox" class="styled-input width-70 txt-bp-term-code" placeholder="Term Code" value="" />*@
+                    <select id="combobox" class="combobox width-70 txt-bp-term-code">
+                    </select>
+                </div>
+                <div class="input-container flex-row">
+                    <label for="combobox" class="width-30">Price List: *</label>
+                    <select id="combobox" class="combobox width-70 txt-bp-price-list">
+                    </select>
+                </div>
+            </div>
+            <div class="col col-xxl-4 col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-30">Status:</label>
+                    <input type="text" id="textbox" class="styled-input width-70 txt-bp-status" placeholder="Status" readonly="readonly" />
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-30">Province: *</label>
+                    <select id="combobox" class="combobox width-70 txt-province">
+                    </select>
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-30">District: *</label>
+                    <select id="combobox" class="combobox width-70 txt-district">
+                    </select>
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-30">Commune: *</label>
+                    <select id="combobox" class="combobox width-70 txt-commune">
+                    </select>
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-30">Village: *</label>
+                    <select id="combobox" class="combobox width-70 txt-village" onchange="GetSelectedVillage()">
+                    </select>
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-30">Address EN: *</label>
+                    <input type="text" id="textbox" class="styled-input width-70 txt-address-en" placeholder="Address EN" />
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-30">Address KH: *</label>
+                    <input type="text" id="textbox" class="styled-input width-70 txt-address-kh" placeholder="Address KH" />
+                    <input type="hidden" id="textbox" class="styled-input width-70 txt-address-code" />
+                </div>
+            </div>
+            <div class="col col-xxl-4 col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                <div class="input-container flex-row">
+                    <img id="img_profile" src="~/Attachments/Profiles/IMG_9502.jpg" style="width:100%;height:300px;object-fit:cover" /> 
+                </div>
+            </div>
+            
+            <div class="col col-xxl-2 col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12 my-4 col-sub-page-body">
+                <div class="button-container flex-row">
+                    <button class="btn-save" id="btn-save-bp"><i class="fa-solid fa-save"></i>&nbsp;Save</button>
+                    <button class="btn-save btn-warning" id="btn-confrim-bp"><i class="fa-solid fa-check"></i>&nbsp;Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        flatpickr(".datetime", {
+            dateFormat: "d-m-Y",
+        });
+        GetBPTerm();
+        GetBPPriceList();
+        GetBPChannel();
+        GetBPGroup();
+        GetProvince();
+        GetBPDetail('@code');
+
+        //if ($("#txt-code").val() == "") {
+        //    $("#btn-confrim-bp").hide();
+        //}
+
+    });
+</script>
+
+

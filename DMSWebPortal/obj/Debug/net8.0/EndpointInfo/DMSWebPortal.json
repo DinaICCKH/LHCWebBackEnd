@@ -1,0 +1,6418 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "ICC_Kubera API",
+    "description": "This API handles sales login, reporting, and other ICC operations. Developed by Channa.",
+    "termsOfService": "https://yourcompany.com/terms",
+    "contact": {
+      "name": "SAO Channa",
+      "url": "https://yourcompany.com",
+      "email": "saochanna9944@gmail.com"
+    },
+    "license": {
+      "name": "ICCKH License",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Alert/get-alert": {
+      "get": {
+        "tags": [
+          "Alert"
+        ],
+        "summary": "Get For Telegram Alert",
+        "description": "This end-point controll for get alert from database to alert in telegrame.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Alert/set-alert": {
+      "post": {
+        "tags": [
+          "Alert"
+        ],
+        "summary": "Set For Telegram Alert",
+        "description": "This end-point controll for set alert from database to alert in telegrame.",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAlertRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAlertRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAlertRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAlertRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/app/Login": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "Login API",
+        "description": "Authenticate user and return JWT access + refresh token.",
+        "parameters": [
+          {
+            "name": "uSalesCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "uSecret",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "uDeviceID",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/RefreshToken": {
+      "post": {
+        "tags": [
+          "appControllers"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshTokenRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshTokenRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshTokenRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshTokenRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/ItemWhsPrice": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "Get Whs and Price",
+        "description": "This endpoint is used to get warehouse and price.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblItemWhsPricing"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblItemWhsPricing"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblItemWhsPricing"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/ItemList/{U_SalesCode}": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "Get Item List By Sales code",
+        "description": "This endpoint is used to get item list by sales code",
+        "parameters": [
+          {
+            "name": "U_SalesCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/app/Whs": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "Get Whs List",
+        "description": "This endpoint is used to get warehouse list.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblWh"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblWh"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblWh"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/ItemStock/{U_SalesCode}": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "Get Item stock by Sales code",
+        "description": "This endpoint is used to get item stock by sales code.",
+        "parameters": [
+          {
+            "name": "U_SalesCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/app/CustomerList/{uSalesCode}": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "Customer List",
+        "description": "This endpoint is used to get customer list by sales code.",
+        "parameters": [
+          {
+            "name": "uSalesCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/app/AddressList": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "Address List",
+        "description": "This endpoint is used to get address list.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblAddress"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblAddress"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblAddress"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/ProType": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblProType"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblProType"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblProType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/Zone": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "Zone List",
+        "description": "This endpoint is used to get zone list.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblZone"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblZone"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblZone"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/SubZone": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "Get Sub Zone",
+        "description": "This endpoint is used to get sub zone.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblSubZone"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblSubZone"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblSubZone"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/ProCal": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "parameters": [
+          {
+            "name": "cardcode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "docdate",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sellitem",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_promocal"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_promocal"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_promocal"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/Promotion": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblPromotion"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblPromotion"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblPromotion"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/Promotion1": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblPromotion1"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblPromotion1"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblPromotion1"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/ProMonthly": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblProMonthly"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblProMonthly"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblProMonthly"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/ProFOCType": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblProFOCType"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblProFOCType"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblProFOCType"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/ProCondition": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblProCondition"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblProCondition"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblProCondition"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/Principle": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblPrinciple"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblPrinciple"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblPrinciple"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/BankLists": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblBank"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblBank"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblBank"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/PaymentTermList": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblPayment"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblPayment"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblPayment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/CustomerGroupList": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblBPGroup"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblBPGroup"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblBPGroup"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/ChannelList": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblBPChannel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblBPChannel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblBPChannel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/VisitPlans/{uSalesCode}": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "parameters": [
+          {
+            "name": "uSalesCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VisitPlanDto_App"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VisitPlanDto_App"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VisitPlanDto_App"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/CallPlans/{uSalesCode}": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "parameters": [
+          {
+            "name": "uSalesCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CallPlanDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CallPlanDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CallPlanDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/ItemPricing": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "For Get Item Price",
+        "description": "This endpoint is used to get item price.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ItemPricingDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ItemPricingDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ItemPricingDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/UoMGroup": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "For get UoM Group",
+        "description": "This endpoint is used to get UoM Group.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblUoMGroup"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblUoMGroup"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblUoMGroup"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/Reason": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "For get Reason",
+        "description": "This endpoint is used to get reason.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Reason"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Reason"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Reason"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/Regional": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "For get Regional",
+        "description": "This endpoint is used to get regional.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblRegional"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblRegional"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblRegional"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/get_Order_Status/{uSalesCode}": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "For get Order Status",
+        "description": "This endpoint is used to get order status.",
+        "parameters": [
+          {
+            "name": "uSalesCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_Order_Status"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_Order_Status"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_Order_Status"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/set_Order_Status": {
+      "post": {
+        "tags": [
+          "appControllers"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Order_Status"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Order_Status"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Order_Status"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Order_Status"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/app/BPRequest": {
+      "post": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "For add and update BP",
+        "description": "This endpoint is used to add and update BP request.",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "AppCode": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "BPEntry": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "SalesCode": {
+                    "type": "string"
+                  },
+                  "CardName": {
+                    "type": "string"
+                  },
+                  "CardFName": {
+                    "type": "string"
+                  },
+                  "VATNo": {
+                    "type": "string"
+                  },
+                  "VATImage": {
+                    "type": "string"
+                  },
+                  "ContactPer": {
+                    "type": "string"
+                  },
+                  "GroupCode": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Channel": {
+                    "type": "string"
+                  },
+                  "TermCode": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Phone1": {
+                    "type": "string"
+                  },
+                  "Phone2": {
+                    "type": "string"
+                  },
+                  "Phone3": {
+                    "type": "string"
+                  },
+                  "Email": {
+                    "type": "string"
+                  },
+                  "ProCode": {
+                    "type": "string"
+                  },
+                  "DisCode": {
+                    "type": "string"
+                  },
+                  "ComCode": {
+                    "type": "string"
+                  },
+                  "VilName": {
+                    "type": "string"
+                  },
+                  "HouseNo": {
+                    "type": "string"
+                  },
+                  "StreetNo": {
+                    "type": "string"
+                  },
+                  "FullAddKH": {
+                    "type": "string"
+                  },
+                  "FullAddEN": {
+                    "type": "string"
+                  },
+                  "GPSLateLong": {
+                    "type": "string"
+                  },
+                  "ImageUrlServer": {
+                    "type": "string"
+                  },
+                  "AddressCode": {
+                    "type": "string"
+                  },
+                  "Image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "AppCode": {
+                  "style": "form"
+                },
+                "BPEntry": {
+                  "style": "form"
+                },
+                "SalesCode": {
+                  "style": "form"
+                },
+                "CardName": {
+                  "style": "form"
+                },
+                "CardFName": {
+                  "style": "form"
+                },
+                "VATNo": {
+                  "style": "form"
+                },
+                "VATImage": {
+                  "style": "form"
+                },
+                "ContactPer": {
+                  "style": "form"
+                },
+                "GroupCode": {
+                  "style": "form"
+                },
+                "Channel": {
+                  "style": "form"
+                },
+                "TermCode": {
+                  "style": "form"
+                },
+                "Phone1": {
+                  "style": "form"
+                },
+                "Phone2": {
+                  "style": "form"
+                },
+                "Phone3": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "ProCode": {
+                  "style": "form"
+                },
+                "DisCode": {
+                  "style": "form"
+                },
+                "ComCode": {
+                  "style": "form"
+                },
+                "VilName": {
+                  "style": "form"
+                },
+                "HouseNo": {
+                  "style": "form"
+                },
+                "StreetNo": {
+                  "style": "form"
+                },
+                "FullAddKH": {
+                  "style": "form"
+                },
+                "FullAddEN": {
+                  "style": "form"
+                },
+                "GPSLateLong": {
+                  "style": "form"
+                },
+                "ImageUrlServer": {
+                  "style": "form"
+                },
+                "AddressCode": {
+                  "style": "form"
+                },
+                "Image": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/app/AddCheckCustomer": {
+      "post": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "For add checkin and checkout",
+        "description": "This endpoint is used to add checkin and checkout and update status of checkin and checkout.",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "DocEntry": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "AppEntry": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "CardCode": {
+                    "type": "string"
+                  },
+                  "CheckInImage": {
+                    "type": "string"
+                  },
+                  "CheckOutImage": {
+                    "type": "string"
+                  },
+                  "CheckInDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "CheckOutDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "CheckInGPS": {
+                    "type": "string"
+                  },
+                  "CheckOutGPS": {
+                    "type": "string"
+                  },
+                  "CheckInRemark": {
+                    "type": "string"
+                  },
+                  "CheckOutRemark": {
+                    "type": "string"
+                  },
+                  "CheckStatus": {
+                    "type": "string"
+                  },
+                  "AppOrderEntry": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "DMSOrderEntry": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "SalesCode": {
+                    "type": "string"
+                  },
+                  "CheckInImageFile": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "CheckOutImageFile": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "CheckOutReasonsJson": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "DocEntry": {
+                  "style": "form"
+                },
+                "AppEntry": {
+                  "style": "form"
+                },
+                "CardCode": {
+                  "style": "form"
+                },
+                "CheckInImage": {
+                  "style": "form"
+                },
+                "CheckOutImage": {
+                  "style": "form"
+                },
+                "CheckInDate": {
+                  "style": "form"
+                },
+                "CheckOutDate": {
+                  "style": "form"
+                },
+                "CheckInGPS": {
+                  "style": "form"
+                },
+                "CheckOutGPS": {
+                  "style": "form"
+                },
+                "CheckInRemark": {
+                  "style": "form"
+                },
+                "CheckOutRemark": {
+                  "style": "form"
+                },
+                "CheckStatus": {
+                  "style": "form"
+                },
+                "AppOrderEntry": {
+                  "style": "form"
+                },
+                "DMSOrderEntry": {
+                  "style": "form"
+                },
+                "SalesCode": {
+                  "style": "form"
+                },
+                "CheckInImageFile": {
+                  "style": "form"
+                },
+                "CheckOutImageFile": {
+                  "style": "form"
+                },
+                "CheckOutReasonsJson": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/app/Orders_And_Reason_Order": {
+      "post": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "For Add Order",
+        "description": "This endpoint is used to add new sale order.",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/app/Get_Available_Order/{uSalesCode}": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "For Get Avaliable Order",
+        "description": "This endpoint is used to get avaliable order.",
+        "parameters": [
+          {
+            "name": "uSalesCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_Order"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_Order"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_Order"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/app/Set_Available_Order": {
+      "post": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "For Set Avaliable Order",
+        "description": "This endpoint is used to set avaliable order.",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Order_Status"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Order_Status"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Order_Status"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Order_Status"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/app/Income": {
+      "post": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "For Add Income",
+        "description": "This endpoint is used to add income.",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncomeDtoApp"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncomeDtoApp"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncomeDtoApp"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncomeDtoApp"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/app/GetSAPNo": {
+      "post": {
+        "tags": [
+          "appControllers"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_OrderSAP"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_OrderSAP"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_OrderSAP"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_OrderSAP"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/app/get_update_status/{salescode}": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "Get Update Status in App",
+        "description": "This endpoint is used to get status to update in App.",
+        "parameters": [
+          {
+            "name": "salescode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/app/get-today-exchange-rate": {
+      "get": {
+        "tags": [
+          "appControllers"
+        ],
+        "summary": "Get toady Exchange rate",
+        "description": "This endpoint is used to get today exchange rate.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Login API",
+        "description": "Authenticate user and return JWT access + refresh token.",
+        "parameters": [
+          {
+            "name": "uSalesCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "uSecret",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "uDeviceID",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "uClientType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/refresh-token": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Refresh Token",
+        "description": "Authenticate user and return new JWT access + new refresh token.",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshTokenRequestDto"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshTokenRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshTokenRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshTokenRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Notification/notify": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/uploadImage": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_item": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Item"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Item"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Item"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Item"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_principle": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPrinciple"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPrinciple"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPrinciple"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPrinciple"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_maincat": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblMainCat"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblMainCat"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblMainCat"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblMainCat"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_subcat": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblSubCat"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblSubCat"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblSubCat"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblSubCat"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_uomgroup": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblUoMGroup"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblUoMGroup"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblUoMGroup"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblUoMGroup"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_whs": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblWh"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblWh"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblWh"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblWh"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_itemprice": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemPricing"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemPricing"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemPricing"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemPricing"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_itemstock": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemStock"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemStock"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemStock"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemStock"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_regional": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblRegional"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblRegional"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblRegional"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblRegional"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_salesemployee": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblSalesEmployee"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblSalesEmployee"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblSalesEmployee"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblSalesEmployee"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_bp": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Bp"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Bp"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Bp"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_Bp"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_bpchannel": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBPChannel"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBPChannel"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBPChannel"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBPChannel"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_bpgroup": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBPGroup"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBPGroup"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBPGroup"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBPGroup"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_bpmapping": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBPSalMapping"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBPSalMapping"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBPSalMapping"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBPSalMapping"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_term": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPayment"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPayment"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPayment"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPayment"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_pricelist": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPriceList"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPriceList"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPriceList"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPriceList"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_address": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblAddress"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblAddress"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblAddress"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblAddress"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_sal_mapping": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_salmapping"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_salmapping"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_salmapping"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/v_salmapping"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_Zone": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblZone"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblZone"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblZone"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblZone"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_SubZone": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblSubZone"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblSubZone"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblSubZone"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblSubZone"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_prom": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPromotion"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPromotion"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPromotion"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPromotion"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_prom1": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPromotion1"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPromotion1"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPromotion1"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPromotion1"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_promgroup": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPromotionGroup"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPromotionGroup"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPromotionGroup"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblPromotionGroup"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_promfoctype": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblProFOCType"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblProFOCType"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblProFOCType"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblProFOCType"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_bank": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBank"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBank"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBank"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblBank"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_exchange": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ExchangeRate"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ExchangeRate"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ExchangeRate"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ExchangeRate"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/Get_Available_Order": {
+      "get": {
+        "tags": [
+          "sap"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_Order"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_Order"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_Order"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sap/Get_Available_Income": {
+      "get": {
+        "tags": [
+          "sap"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_Income"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_Income"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/v_Income"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sap/Get_Available_BP_Request": {
+      "get": {
+        "tags": [
+          "sap"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblBPRequest"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblBPRequest"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/tblBPRequest"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sap/Set_Order": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/v_Order"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v_Order"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v_Order"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/v_Order"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/Set_Income": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/v_Income"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v_Income"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v_Income"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/v_Income"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/Set_BPRequest": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/tblBPRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tblBPRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/tblBPRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/tblBPRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/Set_Order_Status": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/v_Order_Status"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v_Order_Status"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v_Order_Status"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/v_Order_Status"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_item_batch": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TblItemBatch"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TblItemBatch"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TblItemBatch"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TblItemBatch"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_item_whs_price": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemWhsPricing"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemWhsPricing"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemWhsPricing"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemWhsPricing"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sap/add_ar": {
+      "post": {
+        "tags": [
+          "sap"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemWhsPricing"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemWhsPricing"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemWhsPricing"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/tblItemWhsPricing"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthResponseDto": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "user": {
+            "$ref": "#/components/schemas/LoginResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CallPlanDto": {
+        "type": "object",
+        "properties": {
+          "docEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "visitDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cardCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "uSalesCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DetailsOneDto": {
+        "type": "object",
+        "properties": {
+          "docEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lineNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemName": {
+            "type": "string",
+            "nullable": true
+          },
+          "uoMentry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "quantity": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "unitPrice": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "disPer": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "disAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "lineTotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "whsCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "refLineNum": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "saleType": {
+            "type": "string",
+            "nullable": true
+          },
+          "proCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "proLineNum": {
+            "type": "string",
+            "nullable": true
+          },
+          "promotionType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DetailsTwoDto": {
+        "type": "object",
+        "properties": {
+          "lineNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reasonCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExchangeRate": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "curCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "rateDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HeaderDto": {
+        "type": "object",
+        "properties": {
+          "cardCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardName": {
+            "type": "string",
+            "nullable": true
+          },
+          "delAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "docDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "subTotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "disPer": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "disAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "afterDis": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "vatamount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "total": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "salesCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "nullable": true
+          },
+          "appId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "appDocNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkInDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "checkInLateLong": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkInRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkOutDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "checkOutLateLong": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkOutRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "vatType": {
+            "type": "string",
+            "nullable": true
+          },
+          "termCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "checkInID": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkOutID": {
+            "type": "string",
+            "nullable": true
+          },
+          "poNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "usdAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "khrAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "exchangeRate": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "saleType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IncomeDtoApp": {
+        "type": "object",
+        "properties": {
+          "docEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "soDocEntry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "soBalance": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "bankCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "bankAmountUSD": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "bankAmountKHR": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "cashAmountUSD": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "cashAmountKHR": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "sapIncomeDocEntry": {
+            "type": "string",
+            "nullable": true
+          },
+          "integrationStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastError": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemPricingDto": {
+        "type": "object",
+        "properties": {
+          "pricingKey": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "priceListCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "uoMEntry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "userCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userProfile": {
+            "type": "string",
+            "nullable": true
+          },
+          "slpCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "salesName": {
+            "type": "string",
+            "nullable": true
+          },
+          "telephone": {
+            "type": "string",
+            "nullable": true
+          },
+          "uSalesCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "uWhs": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "sm": {
+            "type": "string",
+            "nullable": true
+          },
+          "rsm": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "nonTaxPre": {
+            "type": "string",
+            "nullable": true
+          },
+          "taxPre": {
+            "type": "string",
+            "nullable": true
+          },
+          "exchangeRate": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "salesType": {
+            "type": "string",
+            "nullable": true
+          },
+          "autoSync": {
+            "type": "string",
+            "nullable": true
+          },
+          "printerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "macAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "isAllPrinciple": {
+            "type": "string",
+            "nullable": true
+          },
+          "isTax": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderRequestDto": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "$ref": "#/components/schemas/HeaderDto"
+          },
+          "detailsOne": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetailsOneDto"
+            },
+            "nullable": true
+          },
+          "detailsTwo": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetailsTwoDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Reason": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reason1": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasonKH": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasonEN": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RefreshTokenRequestDto": {
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SetAlertRequest": {
+        "type": "object",
+        "properties": {
+          "docEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "docType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TblItemBatch": {
+        "type": "object",
+        "properties": {
+          "absEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "batchNum": {
+            "type": "string",
+            "nullable": true
+          },
+          "inDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "expDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "mnfDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "whsCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "batchQty": {
+            "type": "number",
+            "format": "double"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VisitPlanDto_App": {
+        "type": "object",
+        "properties": {
+          "docEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "visitDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "cardCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "uSalesCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblAddress": {
+        "type": "object",
+        "properties": {
+          "addressCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressName": {
+            "type": "string",
+            "nullable": true
+          },
+          "comCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "comENName": {
+            "type": "string",
+            "nullable": true
+          },
+          "comKHName": {
+            "type": "string",
+            "nullable": true
+          },
+          "disCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "disENName": {
+            "type": "string",
+            "nullable": true
+          },
+          "disKHName": {
+            "type": "string",
+            "nullable": true
+          },
+          "proCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "proENName": {
+            "type": "string",
+            "nullable": true
+          },
+          "proKHName": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressKH": {
+            "type": "string",
+            "nullable": true
+          },
+          "villageCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "villageNameEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "villageNameKH": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "zone": {
+            "type": "string",
+            "nullable": true
+          },
+          "subZone": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblBPChannel": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblBPGroup": {
+        "type": "object",
+        "properties": {
+          "groupCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "groupName": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblBPRequest": {
+        "type": "object",
+        "properties": {
+          "docEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bpKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "appCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cardName": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardFName": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactPer": {
+            "type": "string",
+            "nullable": true
+          },
+          "groupCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "phone1": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone2": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone3": {
+            "type": "string",
+            "nullable": true
+          },
+          "vatNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "defPriceListCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "creditLimited": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "termCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "gpsLateLong": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagePath": {
+            "type": "string",
+            "nullable": true
+          },
+          "channel": {
+            "type": "string",
+            "nullable": true
+          },
+          "subGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "proCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "disCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "comCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "vilName": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullAddKH": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullAddEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "confimedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "confirmedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "bpSource": {
+            "type": "string",
+            "nullable": true
+          },
+          "salesCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "isVAT": {
+            "type": "string",
+            "nullable": true
+          },
+          "houseNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "streetNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastError": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "vatImage": {
+            "type": "string",
+            "nullable": true
+          },
+          "jsonRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "sapSyncStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "grade": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblBPSalMapping": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "slpCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblBank": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "bankCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "bankName": {
+            "type": "string",
+            "nullable": true
+          },
+          "glAccount": {
+            "type": "string",
+            "nullable": true
+          },
+          "curCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblItemPricing": {
+        "type": "object",
+        "properties": {
+          "pricingKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "priceListCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "uoMEntry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblItemStock": {
+        "type": "object",
+        "properties": {
+          "itemStockKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "whsCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "onhand": {
+            "type": "number",
+            "format": "double"
+          },
+          "onOrder": {
+            "type": "number",
+            "format": "double"
+          },
+          "isCommited": {
+            "type": "number",
+            "format": "double"
+          },
+          "available": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "minStock": {
+            "type": "number",
+            "format": "double"
+          },
+          "maxStock": {
+            "type": "number",
+            "format": "double"
+          },
+          "altQty": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblItemWhsPricing": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "whsCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "uoMEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblMainCat": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "dscription": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblPayment": {
+        "type": "object",
+        "properties": {
+          "termCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "termName": {
+            "type": "string",
+            "nullable": true
+          },
+          "addMonth": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "addDay": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblPriceList": {
+        "type": "object",
+        "properties": {
+          "listNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "listName": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblPrinciple": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "dscription": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblProCondition": {
+        "type": "object",
+        "properties": {
+          "conditionCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "dscription": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblProFOCType": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "dscription": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblProMonthly": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dscription": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblProType": {
+        "type": "object",
+        "properties": {
+          "proTypeCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "proTypeDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblPromotion": {
+        "type": "object",
+        "properties": {
+          "proEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "principleCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "principleDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "fDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "tDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblPromotion1": {
+        "type": "object",
+        "properties": {
+          "proEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lineNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemGroupCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "itemGroupName": {
+            "type": "string",
+            "nullable": true
+          },
+          "packType": {
+            "type": "string",
+            "nullable": true
+          },
+          "promotionGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "bpGroup": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "bpGroupName": {
+            "type": "string",
+            "nullable": true
+          },
+          "bpChannelCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "bpChannelName": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardName": {
+            "type": "string",
+            "nullable": true
+          },
+          "combine": {
+            "type": "string",
+            "nullable": true
+          },
+          "promotionType": {
+            "type": "string",
+            "nullable": true
+          },
+          "focType": {
+            "type": "string",
+            "nullable": true
+          },
+          "condition": {
+            "type": "string",
+            "nullable": true
+          },
+          "buyAmt": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "buyQty": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "buyUoM": {
+            "type": "string",
+            "nullable": true
+          },
+          "focQty": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "focUoM": {
+            "type": "string",
+            "nullable": true
+          },
+          "disPer": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "disAmt": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "nullable": true
+          },
+          "validFrom": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "validTo": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "lineStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblPromotionGroup": {
+        "type": "object",
+        "properties": {
+          "proGroupCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "proDesc": {
+            "type": "string",
+            "nullable": true
+          },
+          "proStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblRegional": {
+        "type": "object",
+        "properties": {
+          "regionalCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "regionalName": {
+            "type": "string",
+            "nullable": true
+          },
+          "cC3Loc": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblSalesEmployee": {
+        "type": "object",
+        "properties": {
+          "slpCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "salesName": {
+            "type": "string",
+            "nullable": true
+          },
+          "u_Whs": {
+            "type": "string",
+            "nullable": true
+          },
+          "u_SalesCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "salType": {
+            "type": "string",
+            "nullable": true
+          },
+          "isAllPrinciple": {
+            "type": "string",
+            "nullable": true
+          },
+          "isTax": {
+            "type": "string",
+            "nullable": true
+          },
+          "principleAssign": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDepo": {
+            "type": "string",
+            "nullable": true
+          },
+          "depoID": {
+            "type": "string",
+            "nullable": true
+          },
+          "mainWhs": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblSubCat": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "dscription": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "mainCat": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblSubZone": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "subZoneName": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblUoMGroup": {
+        "type": "object",
+        "properties": {
+          "ugpKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "ugpEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ugpName": {
+            "type": "string",
+            "nullable": true
+          },
+          "uoMEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "uoMCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseQty": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "altQty": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblWh": {
+        "type": "object",
+        "properties": {
+          "whsCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "whsName": {
+            "type": "string",
+            "nullable": true
+          },
+          "whsStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "shows": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "tblZone": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "nullable": true
+          },
+          "zoneName": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_Bp": {
+        "type": "object",
+        "properties": {
+          "cardCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardName": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardFname": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactPer": {
+            "type": "string",
+            "nullable": true
+          },
+          "groupCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "vatno": {
+            "type": "string",
+            "nullable": true
+          },
+          "defPriceListCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "creditLimited": {
+            "type": "number",
+            "format": "double"
+          },
+          "termCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "termName": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "gpslateLong": {
+            "type": "string",
+            "nullable": true
+          },
+          "balance": {
+            "type": "number",
+            "format": "double"
+          },
+          "imagePath": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrlServer": {
+            "type": "string",
+            "nullable": true
+          },
+          "channel": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "proCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "disCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "comCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "vilName": {
+            "type": "string",
+            "nullable": true
+          },
+          "addressCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullAddKh": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullAddEn": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "confimedBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "confirmedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "bpsource": {
+            "type": "string",
+            "nullable": true
+          },
+          "bprkey": {
+            "type": "string",
+            "nullable": true
+          },
+          "sync": {
+            "type": "string",
+            "nullable": true
+          },
+          "territory": {
+            "type": "string",
+            "nullable": true
+          },
+          "appCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "vatimage": {
+            "type": "string",
+            "nullable": true
+          },
+          "subZone": {
+            "type": "string",
+            "nullable": true
+          },
+          "allowDown": {
+            "type": "string",
+            "nullable": true
+          },
+          "zone": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v_Bpcontact"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_Bpcontact": {
+        "type": "object",
+        "properties": {
+          "contactCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cardCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "tel1": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_Income": {
+        "type": "object",
+        "properties": {
+          "docEntry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "soDocEntry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "bankCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "bankAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "cashAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "curCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "docDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "rate": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "arEntry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "bankGL": {
+            "type": "string",
+            "nullable": true
+          },
+          "cashGL": {
+            "type": "string",
+            "nullable": true
+          },
+          "sapDocEntry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lastError": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_Item": {
+        "type": "object",
+        "properties": {
+          "itemCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemName": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemGroupCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemGroupName": {
+            "type": "string",
+            "nullable": true
+          },
+          "ugpEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "onhand": {
+            "type": "number",
+            "format": "double"
+          },
+          "onOrder": {
+            "type": "number",
+            "format": "double"
+          },
+          "isCommited": {
+            "type": "number",
+            "format": "double"
+          },
+          "available": {
+            "type": "number",
+            "format": "double"
+          },
+          "minLevel": {
+            "type": "number",
+            "format": "double"
+          },
+          "maxLevel": {
+            "type": "number",
+            "format": "double"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrlServer": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrlLocal": {
+            "type": "string",
+            "nullable": true
+          },
+          "frgnName": {
+            "type": "string",
+            "nullable": true
+          },
+          "invUoMcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "invUoMentry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "uProGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "hasPromotion": {
+            "type": "string",
+            "nullable": true
+          },
+          "ocrCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "ocrCode2": {
+            "type": "string",
+            "nullable": true
+          },
+          "ocrCode3": {
+            "type": "string",
+            "nullable": true
+          },
+          "ocrCode4": {
+            "type": "string",
+            "nullable": true
+          },
+          "principleCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "mainCat": {
+            "type": "string",
+            "nullable": true
+          },
+          "subCat": {
+            "type": "string",
+            "nullable": true
+          },
+          "packageType": {
+            "type": "string",
+            "nullable": true
+          },
+          "barCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "defEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "altQty": {
+            "type": "number",
+            "format": "double"
+          },
+          "pricing": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v_ItemPricing"
+            },
+            "nullable": true
+          },
+          "stocks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v_ItemStock"
+            },
+            "nullable": true
+          },
+          "uoMgroups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v_UoMgroup"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_ItemPricing": {
+        "type": "object",
+        "properties": {
+          "pricingKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "priceListCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "uoMentry": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_ItemStock": {
+        "type": "object",
+        "properties": {
+          "itemStockKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "whsCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "onhand": {
+            "type": "number",
+            "format": "double"
+          },
+          "onOrder": {
+            "type": "number",
+            "format": "double"
+          },
+          "isCommited": {
+            "type": "number",
+            "format": "double"
+          },
+          "available": {
+            "type": "number",
+            "format": "double"
+          },
+          "minStock": {
+            "type": "number",
+            "format": "double"
+          },
+          "maxStock": {
+            "type": "number",
+            "format": "double"
+          },
+          "altQty": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_Order": {
+        "type": "object",
+        "properties": {
+          "docEntry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "docNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardName": {
+            "type": "string",
+            "nullable": true
+          },
+          "contactPer": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "delAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "docDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "taxDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "docCur": {
+            "type": "string",
+            "nullable": true
+          },
+          "docRate": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "subTotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "disPer": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "disAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "afterDis": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "vatAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "total": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "salesCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "remark": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "appId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "appDocNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "apiStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "apiErrMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "vatStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkInDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "checkInLateLong": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkInRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkOutDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "checkOutLateLong": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkOutRemark": {
+            "type": "string",
+            "nullable": true
+          },
+          "branch": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "slpCode": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "salType": {
+            "type": "string",
+            "nullable": true
+          },
+          "vatType": {
+            "type": "string",
+            "nullable": true
+          },
+          "order1": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v_Order1"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_Order1": {
+        "type": "object",
+        "properties": {
+          "docEntry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lineNum": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "itemCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemName": {
+            "type": "string",
+            "nullable": true
+          },
+          "uoMEntry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "quantity": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "unitPrice": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "disPer": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "disAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "lineTotal": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "whsCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "refLineNum": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "salType": {
+            "type": "string",
+            "nullable": true
+          },
+          "ocrCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "ocrCode2": {
+            "type": "string",
+            "nullable": true
+          },
+          "ocrCode3": {
+            "type": "string",
+            "nullable": true
+          },
+          "ocrCode4": {
+            "type": "string",
+            "nullable": true
+          },
+          "ocrCode5": {
+            "type": "string",
+            "nullable": true
+          },
+          "vatGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "proCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "proLineNo": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "promotionType": {
+            "type": "string",
+            "nullable": true
+          },
+          "uoMCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_OrderSAP": {
+        "type": "object",
+        "properties": {
+          "appId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "salesCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "sapDocNo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_Order_Status": {
+        "type": "object",
+        "properties": {
+          "docEntry": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "baseType": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "docNo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_UoMgroup": {
+        "type": "object",
+        "properties": {
+          "ugpKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "ugpEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ugpName": {
+            "type": "string",
+            "nullable": true
+          },
+          "uoMentry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "uoMcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "baseQty": {
+            "type": "number",
+            "format": "double"
+          },
+          "altQty": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_promocal": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "string",
+            "nullable": true
+          },
+          "uoM": {
+            "type": "string",
+            "nullable": true
+          },
+          "getProType": {
+            "type": "string",
+            "nullable": true
+          },
+          "lineDisPer": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "lineDisAmt": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "docDisPer": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "docDisAmt": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "uoMEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "whsCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "whsName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_salitem": {
+        "type": "object",
+        "properties": {
+          "docEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lineNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "slpCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_salmapping": {
+        "type": "object",
+        "properties": {
+          "slpcode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "listsalitems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v_salitem"
+            },
+            "nullable": true
+          },
+          "listsalregions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v_salregion"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v_salregion": {
+        "type": "object",
+        "properties": {
+          "docEntry": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lineNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "slpCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "docStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+﻿@using DMSWebPortal.Models;
+@{
+    ViewBag.Title = "New Visit Plan";
+    List<tblSalesEmployee> sales = ViewBag.sales ?? new List<tblSalesEmployee>();
+    string docnum = ViewBag.docnum ?? "";
+}
+<div class="hidden-feild" style="display:none;">
+    <input type="hidden" id="txt-docentry" value="0" />
+</div>
+<div class="row row-sub-page">
+    <div class="container-fluid container-sub-page">
+        <div class="row row-sub-page-header">
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-name">
+                <h6>New Visit Plan</h6>
+            </div>
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-path">
+                <h6>Plan / New Visit Plan</h6>
+            </div>
+        </div>
+        <div class="row row-sub-page-body">
+            <div class="col col-xxl-8 col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 filter-container">
+                <div class="form-control input-container flex-row">
+                    <label for="textbox" class="width-50">Document Number: </label>
+                    <input type="text" id="textbox" class="styled-input width-50 txt-docnum"
+                           placeholder="Document Number" value="@docnum" readonly />
+                </div>
+                <div class="form-control combobox-container flex-row">
+                    <label for="combobox" class="width-40">Sale Employee: *</label>
+                    <select id="combobox_saleemployee" class="combobox width-60 conbobox-sale-emp">
+                        <option value=""></option>
+                        @foreach (var x in sales)
+                        {
+                            <option value="@x.SlpCode" data-code="@x.U_SalesCode">@x.SalesName</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-control combobox-container flex-row">
+                    <label for="combobox" class="width-40">Year: *</label>
+                    <select id="combobox_year" class="combobox conbobox-year width-60">
+                        <option value="" disabled>---select one---</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-container-tab">
+                <div class="container-fluid container-tab">
+                    <div class="row row-btn-tab">
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-container-tab-header">
+                            <h6>Month Detal</h6>
+                        </div>
+                        <div class="col col-xxl-1 col-xl-1 col-lg-1 col-md-12 col-sm-12 col-12 col-btn-tab">
+                            <div class="btn-tab-month btn-tab-month-1" data-month="1">January</div>
+                        </div>
+                        <div class="col col-xxl-1 col-xl-1 col-lg-1 col-md-12 col-sm-12 col-12 col-btn-tab">
+                            <div class="btn-tab-month btn-tab-month-2" data-month="2">February</div>
+                        </div>
+                        <div class="col col-xxl-1 col-xl-1 col-lg-1 col-md-12 col-sm-12 col-12 col-btn-tab">
+                            <div class="btn-tab-month btn-tab-month-3" data-month="3">March</div>
+                        </div>
+                        <div class="col col-xxl-1 col-xl-1 col-lg-1 col-md-12 col-sm-12 col-12 col-btn-tab">
+                            <div class="btn-tab-month btn-tab-month-4" data-month="4">April</div>
+                        </div>
+                        <div class="col col-xxl-1 col-xl-1 col-lg-1 col-md-12 col-sm-12 col-12 col-btn-tab">
+                            <div class="btn-tab-month btn-tab-month-5" data-month="5">May</div>
+                        </div>
+                        <div class="col col-xxl-1 col-xl-1 col-lg-1 col-md-12 col-sm-12 col-12 col-btn-tab">
+                            <div class="btn-tab-month btn-tab-month-6" data-month="6">June</div>
+                        </div>
+                        <div class="col col-xxl-1 col-xl-1 col-lg-1 col-md-12 col-sm-12 col-12 col-btn-tab">
+                            <div class="btn-tab-month btn-tab-month-7" data-month="7">July</div>
+                        </div>
+                        <div class="col col-xxl-1 col-xl-1 col-lg-1 col-md-12 col-sm-12 col-12 col-btn-tab">
+                            <div class="btn-tab-month btn-tab-month-8" data-month="8">August</div>
+                        </div>
+                        <div class="col col-xxl-1 col-xl-1 col-lg-1 col-md-12 col-sm-12 col-12 col-btn-tab">
+                            <div class="btn-tab-month btn-tab-month-9" data-month="9">September</div>
+                        </div>
+                        <div class="col col-xxl-1 col-xl-1 col-lg-1 col-md-12 col-sm-12 col-12 col-btn-tab">
+                            <div class="btn-tab-month btn-tab-month-10" data-month="10">October</div>
+                        </div>
+                        <div class="col col-xxl-1 col-xl-1 col-lg-1 col-md-12 col-sm-12 col-12 col-btn-tab">
+                            <div class="btn-tab-month btn-tab-month-11" data-month="11">November</div>
+                        </div>
+                        <div class="col col-xxl-1 col-xl-1 col-lg-1 col-md-12 col-sm-12 col-12 col-btn-tab">
+                            <div class="btn-tab-month btn-tab-month-12" data-month="12">December</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 content-month-tab content-month-tab-1">
+                            <div class="content-month content-month-1">
+                            </div>
+                        </div>
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 content-month-tab content-month-tab-2">
+                            <div class="content-month content-month-2">
+                            </div>
+                        </div>
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 content-month-tab content-month-tab-3">
+                            <div class="content-month content-month-3">
+                            </div>
+                        </div>
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 content-month-tab content-month-tab-4">
+                            <div class="content-month content-month-4">
+                            </div>
+                        </div>
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 content-month-tab content-month-tab-5">
+                            <div class="content-month content-month-5">
+                            </div>
+                        </div>
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 content-month-tab content-month-tab-6">
+                            <div class="content-month content-month-6">
+                            </div>
+                        </div>
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 content-month-tab content-month-tab-7">
+                            <div class="content-month content-month-7">
+                            </div>
+                        </div>
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 content-month-tab content-month-tab-8">
+                            <div class="content-month content-month-8">
+                            </div>
+                        </div>
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 content-month-tab content-month-tab-9">
+                            <div class="content-month content-month-9">
+                            </div>
+                        </div>
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 content-month-tab content-month-tab-10">
+                            <div class="content-month content-month-10">
+                            </div>
+                        </div>
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 content-month-tab content-month-tab-11">
+                            <div class="content-month content-month-11">
+                            </div>
+                        </div>
+                        <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 content-month-tab content-month-tab-12">
+                            <div class="content-month content-month-12">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-xxl-2 col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12 my-4 col-sub-page-body">
+                <div class="flex-row">
+                    <button class="btn btn-primary" id="btn-save-plan"><i class="fa-solid fa-save"></i>&nbsp;Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        hideLoading();
+        //LoadComboboxSaleEmp();
+        //$(".txt-docnum").val(GetLastDocNum());
+    });
+</script>

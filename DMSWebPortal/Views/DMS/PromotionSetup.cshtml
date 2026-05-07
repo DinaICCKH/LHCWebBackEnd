@@ -1,0 +1,451 @@
+﻿
+    <style>
+        body {
+            background: #f5f6fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .page-container {
+            background: #fff;
+            padding: 20px 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            font-size: 13px;
+            border-radius: 8px;
+        }
+        /* Header */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+            .page-header h6 {
+                margin: 0;
+                font-weight: 600;
+                font-size: 17px;
+                color: #2c3e50;
+            }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-block;
+            margin-left: 8px;
+        }
+
+        .status-draft {
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .status-active {
+            background: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .status-inactive {
+            background: #e2e3e5;
+            color: #41464b;
+        }
+
+        /* Form */
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 4px;
+            font-size: 13px;
+            color: #444;
+        }
+
+        .required-field::after {
+            content: " *";
+            color: #e74c3c;
+        }
+
+        .form-control, .form-select {
+            border-radius: 6px;
+            padding: 7px 10px;
+            font-size: 13px;
+            border: 1px solid #ced4da;
+        }
+
+        textarea.form-control {
+            resize: none;
+        }
+
+        .section-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin: 20px 0 12px;
+            color: #2984D1;
+            border-bottom: 1px solid #2984D1;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        /* Table */
+        .table {
+            font-size: 13px;
+        }
+
+            .table th {
+                background-color: #f8f9fa;
+                font-weight: 600;
+                color: #495057;
+                vertical-align: middle;
+            }
+
+            .table td {
+                vertical-align: middle;
+            }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            column-gap: 10px;
+        }
+
+        /* Photo Box (for future use if needed) */
+        .photo-box {
+            border: 1px dashed #ccc;
+            border-radius: 6px;
+            height: 200px;
+            width: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafafa;
+        }
+
+        .photo-placeholder {
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+        }
+
+            .photo-placeholder i {
+                font-size: 32px;
+                display: block;
+                margin-bottom: 5px;
+            }
+    </style>
+
+    <div class="page-container">
+        <!-- HEADER -->
+        <div class="page-header">
+            <h6><i class="fas fa-tag me-2"></i> Promotion Setup</h6>
+            <div>
+                <span class="text-muted me-3">Code: <strong>PROMO2026</strong></span>
+                <span class="status-badge status-active">Active</span>
+            </div>
+        </div>
+
+        <!-- TAB NAVIGATION -->
+        <ul class="nav nav-tabs mb-4" id="promotionTabs" role="tablist">
+            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#general">General Information</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#condition">Conditions</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#benefit">FOC / Benefit</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#target">Target Group</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#summary">Summary</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <!-- TAB 1: GENERAL INFORMATION -->
+            <div class="tab-pane fade show active" id="general">
+                <div class="section-title">Basic Details</div>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label required-field">Promotion Code</label>
+                        <input type="text" class="form-control" id="PromoCode" value="PROMO2026" readonly />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label required-field">Promotion Name</label>
+                        <input type="text" class="form-control" id="PromoName" value="New Year Special 2026" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label required-field">Promotion Type</label>
+                        <select class="form-select">
+                            <option selected>FOC</option>
+                            <option>Discount</option>
+                            <option>Bundle</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Priority</label>
+                        <input type="number" class="form-control" value="1" min="1" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label required-field">Valid From</label>
+                        <input type="date" class="form-control" value="2026-01-01" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label required-field">Valid To</label>
+                        <input type="date" class="form-control" value="2026-01-31" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Status</label>
+                        <select class="form-select">
+                            <option>Draft</option>
+                            <option selected>Active</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: CONDITIONS -->
+            <div class="tab-pane fade" id="condition">
+                <div class="section-title">Promotion Conditions <span class="text-danger fs-6">(At least one required)</span></div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width:180px">Condition Type</th>
+                            <th>Item / Group</th>
+                            <th style="width:120px">Min Qty</th>
+                            <th style="width:150px">Min Amount</th>
+                            <th style="width:80px"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="conditionRows">
+                        <tr>
+                            <td>
+                                <select class="form-select" onchange="toggleConditionFields(this)">
+                                    <option>Item</option>
+                                    <option>Item Group</option>
+                                    <option>Quantity</option>
+                                    <option selected>Amount</option>
+                                </select>
+                            </td>
+                            <td><input type="text" class="form-control" placeholder="Click lookup" readonly data-bs-toggle="modal" data-bs-target="#itemModal" /></td>
+                            <td><input type="number" class="form-control" min="0" disabled /></td>
+                            <td><input type="number" class="form-control" value="500.00" min="0" step="0.01" /></td>
+                            <td class="text-center"><button type="button" class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-outline-primary btn-sm" onclick="addConditionRow()">
+                    <i class="fas fa-plus me-1"></i> Add Condition
+                </button>
+            </div>
+
+            <!-- TAB 3: FOC / BENEFIT -->
+            <div class="tab-pane fade" id="benefit">
+                <div class="section-title">FOC / Benefit Setup <span class="text-danger fs-6">(Required for activation)</span></div>
+                <div class="card mb-3 border">
+                    <div class="card-header bg-light">Base FOC Rule (Buy X Get Y)</div>
+                    <div class="card-body">
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto"><label class="col-form-label fw-500">Buy Item</label></div>
+                            <div class="col-4">
+                                <input type="text" class="form-control" value="ITEM001 - Cola 330ml" readonly data-bs-toggle="modal" data-bs-target="#itemModal" />
+                            </div>
+                            <div class="col-auto"><label class="col-form-label fw-500">Buy Qty</label></div>
+                            <div class="col-2">
+                                <input type="number" class="form-control" value="5" min="1" />
+                            </div>
+                            <div class="col-auto"><label class="col-form-label fw-500">Free Item</label></div>
+                            <div class="col-4">
+                                <input type="text" class="form-control" value="ITEM002 - Chips" readonly data-bs-toggle="modal" data-bs-target="#itemModal" />
+                            </div>
+                            <div class="col-2">
+                                <input type="number" class="form-control" value="1" min="1" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title">Tiered FOC (Optional)</div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width:200px">Tier Buy Qty</th>
+                            <th style="width:200px">Tier Free Qty</th>
+                            <th style="width:80px"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tierRows">
+                        <tr>
+                            <td><input type="number" class="form-control" value="10" min="1" /></td>
+                            <td><input type="number" class="form-control" value="3" min="1" /></td>
+                            <td class="text-center"><button type="button" class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-outline-primary btn-sm" onclick="addTierRow()">
+                    <i class="fas fa-plus me-1"></i> Add Tier
+                </button>
+            </div>
+
+            <!-- TAB 4: TARGET GROUP -->
+            <div class="tab-pane fade" id="target">
+                <div class="section-title">Promotion Target</div>
+                <div class="mb-3">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="targetType" id="targetAll" value="All" checked />
+                        <label class="form-check-label" for="targetAll">All Customers</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="targetType" id="targetSpecific" value="Specific" />
+                        <label class="form-check-label" for="targetSpecific">Specific Groups / Customers</label>
+                    </div>
+                </div>
+
+                <div id="specificTargetSection" style="display:none;">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width:180px">Group Type</th>
+                                <th>Code / Name</th>
+                                <th style="width:80px"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="targetRows">
+                            <tr>
+                                <td>
+                                    <select class="form-select">
+                                        <option>Customer Group</option>
+                                        <option selected>Customer</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="form-control" value="CUST001 - John Doe" readonly data-bs-toggle="modal" data-bs-target="#customerModal" /></td>
+                                <td class="text-center"><button type="button" class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="addTargetRow()">
+                        <i class="fas fa-plus me-1"></i> Add Target
+                    </button>
+                </div>
+            </div>
+
+            <!-- TAB 5: SUMMARY -->
+            <div class="tab-pane fade" id="summary">
+                <div class="section-title">Promotion Summary</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Code:</strong> PROMO2026<br />
+                        <strong>Name:</strong> New Year Special 2026<br />
+                        <strong>Type:</strong> FOC<br />
+                        <strong>Valid Period:</strong> 01-Jan-2026 → 31-Jan-2026<br />
+                        <strong>Status:</strong> <span class="status-badge status-active">Active</span>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Conditions:</strong> 1 defined (Min Amount $500)<br />
+                        <strong>Benefit:</strong> Buy 5 Cola → Get 1 Chips Free<br />
+                        <strong>Tier:</strong> Buy 10 → Get 3 Free<br />
+                        <strong>Target:</strong> All Customers
+                    </div>
+                </div>
+
+                <div class="section-title mt-4">Remark</div>
+                <textarea class="form-control" rows="2" placeholder="Enter any notes..."></textarea>
+            </div>
+        </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <button type="button" class="btn btn-primary">
+            <i class="fas fa-save"></i> Save Draft
+        </button>
+        <button type="button" class="btn btn-success">
+            <i class="fas fa-check-circle"></i> Activate
+        </button>
+    </div>
+    </div>
+
+    <!-- Item Lookup Modal -->
+    <div class="modal fade" id="itemModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Item Lookup</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Item search grid would appear here (AJAX loaded)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Lookup Modal -->
+    <div class="modal fade" id="customerModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Customer / Group Lookup</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Customer or group search grid would appear here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Auto generate code from name (optional)
+        document.getElementById('PromoName')?.addEventListener('blur', function () {
+            const codeInput = document.getElementById('PromoCode');
+            if (codeInput && !codeInput.value) {
+                codeInput.value = 'PROMO' + this.value.trim().replace(/\s+/g, '').substring(0, 10).toUpperCase();
+            }
+        });
+
+        function toggleConditionFields(select) {
+            const row = select.closest('tr');
+            const type = select.value;
+            row.cells[1].querySelector('input').disabled = !(type === 'Item' || type === 'ItemGroup');
+            row.cells[2].querySelector('input').disabled = type !== 'Quantity';
+            row.cells[3].querySelector('input').disabled = type !== 'Amount';
+        }
+
+        function addConditionRow() {
+            const tbody = document.getElementById('conditionRows');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><select class="form-select" onchange="toggleConditionFields(this)">
+                    <option>Item</option><option>Item Group</option><option>Quantity</option><option>Amount</option>
+                </select></td>
+                <td><input type="text" class="form-control" placeholder="Click lookup" readonly data-bs-toggle="modal" data-bs-target="#itemModal" /></td>
+                <td><input type="number" class="form-control" min="0" /></td>
+                <td><input type="number" class="form-control" min="0" step="0.01" /></td>
+                <td class="text-center"><button type="button" class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button></td>
+            `;
+            tbody.appendChild(row);
+        }
+
+        function addTierRow() {
+            const tbody = document.getElementById('tierRows');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><input type="number" class="form-control" min="1" /></td>
+                <td><input type="number" class="form-control" min="1" /></td>
+                <td class="text-center"><button type="button" class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button></td>
+            `;
+            tbody.appendChild(row);
+        }
+
+        function addTargetRow() {
+            const tbody = document.getElementById('targetRows');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><select class="form-select"><option>Customer Group</option><option>Customer</option></select></td>
+                <td><input type="text" class="form-control" placeholder="Click lookup" readonly data-bs-toggle="modal" data-bs-target="#customerModal" /></td>
+                <td class="text-center"><button type="button" class="btn btn-sm btn-danger" onclick="this.closest('tr').remove()"><i class="fas fa-trash"></i></button></td>
+            `;
+            tbody.appendChild(row);
+        }
+
+        // Show/hide specific target section
+        document.querySelectorAll('input[name="targetType"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                document.getElementById('specificTargetSection').style.display = this.value === 'Specific' ? 'block' : 'none';
+            });
+        });
+    </script>

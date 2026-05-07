@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Sour Sdey\\source\\repos\\EverGrow_DMS_Web_All-main\\EverGrow_DMS_Web_All-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{144B50FC-47CE-4DE6-BC2F-9E173553A534}|DMSWebPortal\\DMSWebPortal.csproj|c:\\users\\sour sdey\\source\\repos\\evergrow_dms_web_all-main\\evergrow_dms_web_all-main\\dmswebportal\\controllers\\dms_controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{144B50FC-47CE-4DE6-BC2F-9E173553A534}|DMSWebPortal\\DMSWebPortal.csproj|solutionrelative:dmswebportal\\controllers\\dms_controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{144B50FC-47CE-4DE6-BC2F-9E173553A534}|DMSWebPortal\\DMSWebPortal.csproj|c:\\users\\sour sdey\\source\\repos\\evergrow_dms_web_all-main\\evergrow_dms_web_all-main\\dmswebportal\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{144B50FC-47CE-4DE6-BC2F-9E173553A534}|DMSWebPortal\\DMSWebPortal.csproj|solutionrelative:dmswebportal\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{144B50FC-47CE-4DE6-BC2F-9E173553A534}|DMSWebPortal\\DMSWebPortal.csproj|c:\\users\\sour sdey\\source\\repos\\evergrow_dms_web_all-main\\evergrow_dms_web_all-main\\dmswebportal\\wwwroot\\js\\dms.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{144B50FC-47CE-4DE6-BC2F-9E173553A534}|DMSWebPortal\\DMSWebPortal.csproj|solutionrelative:dmswebportal\\wwwroot\\js\\dms.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 277,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "dms.js",
+              "DocumentMoniker": "C:\\Users\\Sour Sdey\\source\\repos\\EverGrow_DMS_Web_All-main\\EverGrow_DMS_Web_All-main\\DMSWebPortal\\wwwroot\\js\\dms.js",
+              "RelativeDocumentMoniker": "DMSWebPortal\\wwwroot\\js\\dms.js",
+              "ToolTip": "C:\\Users\\Sour Sdey\\source\\repos\\EverGrow_DMS_Web_All-main\\EverGrow_DMS_Web_All-main\\DMSWebPortal\\wwwroot\\js\\dms.js",
+              "RelativeToolTip": "DMSWebPortal\\wwwroot\\js\\dms.js",
+              "ViewState": "AgIAAPsLAAAAAAAAAAAUwB0MAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-05-02T04:26:50.362Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DMS_Controller.cs",
+              "DocumentMoniker": "C:\\Users\\Sour Sdey\\source\\repos\\EverGrow_DMS_Web_All-main\\EverGrow_DMS_Web_All-main\\DMSWebPortal\\Controllers\\DMS_Controller.cs",
+              "RelativeDocumentMoniker": "DMSWebPortal\\Controllers\\DMS_Controller.cs",
+              "ToolTip": "C:\\Users\\Sour Sdey\\source\\repos\\EverGrow_DMS_Web_All-main\\EverGrow_DMS_Web_All-main\\DMSWebPortal\\Controllers\\DMS_Controller.cs",
+              "RelativeToolTip": "DMSWebPortal\\Controllers\\DMS_Controller.cs",
+              "ViewState": "AgIAAOUBAAAAAAAAAAAcwJwCAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T02:26:38.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Sour Sdey\\source\\repos\\EverGrow_DMS_Web_All-main\\EverGrow_DMS_Web_All-main\\DMSWebPortal\\Models\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "DMSWebPortal\\Models\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Sour Sdey\\source\\repos\\EverGrow_DMS_Web_All-main\\EverGrow_DMS_Web_All-main\\DMSWebPortal\\Models\\AppDbContext.cs*",
+              "RelativeToolTip": "DMSWebPortal\\Models\\AppDbContext.cs*",
+              "ViewState": "AgIAAM8AAAAAAAAAAAA9wOAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T16:34:02.202Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

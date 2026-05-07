@@ -1,0 +1,47 @@
+﻿{
+  "Timestamp": "2026-03-19 13:31:16",
+  "DocType": "BPRequest",
+  "RequestData": {
+    "AppCode": 0,
+    "BPEntry": 0,
+    "SalesCode": "string",
+    "CardName": "string",
+    "CardFName": "string",
+    "VATNo": "string",
+    "VATImage": "string",
+    "ContactPer": "string",
+    "GroupCode": 0,
+    "Channel": "string",
+    "TermCode": 0,
+    "Phone1": "string",
+    "Phone2": "string",
+    "Phone3": "string",
+    "Email": "string",
+    "ProCode": "string",
+    "DisCode": "string",
+    "ComCode": "string",
+    "VilName": "string",
+    "HouseNo": "string",
+    "StreetNo": "string",
+    "FullAddKH": "string",
+    "FullAddEN": "string",
+    "GPSLateLong": "string",
+    "ImageUrlServer": "string",
+    "AddressCode": "string",
+    "Image": {
+      "ContentDisposition": "form-data; name=\"Image\"; filename=\"DSC05324.jpg\"",
+      "ContentType": "image/jpeg",
+      "Headers": {
+        "Content-Disposition": [
+          "form-data; name=\"Image\"; filename=\"DSC05324.jpg\""
+        ],
+        "Content-Type": [
+          "image/jpeg"
+        ]
+      },
+      "Length": 4852774,
+      "Name": "Image",
+      "FileName": "DSC05324.jpg"
+    }
+  }
+}

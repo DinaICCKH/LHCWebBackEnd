@@ -1,0 +1,62 @@
+﻿{
+  "Header": {
+    "CardCode": "string",
+    "CardName": "string",
+    "DelAddress": "string",
+    "DocDate": "2026-03-19",
+    "SubTotal": 0.0,
+    "DisPer": 0.0,
+    "DisAmount": 0.0,
+    "AfterDis": 0.0,
+    "Vatamount": 0.0,
+    "Total": 0.0,
+    "SalesCode": "string",
+    "Remark": "string",
+    "AppId": 0,
+    "AppDocNo": "string",
+    "CheckInDate": "2026-03-19T06:36:09.773Z",
+    "CheckInLateLong": "string",
+    "CheckInRemark": "string",
+    "ImageUrl": "string",
+    "CheckOutDate": "2026-03-19T06:36:09.773Z",
+    "CheckOutLateLong": "string",
+    "CheckOutRemark": "string",
+    "VatType": "string",
+    "TermCode": 0,
+    "CheckInID": "string",
+    "CheckOutID": "string",
+    "PONo": "string",
+    "USDAmount": 0.0,
+    "KHRAmount": 0.0,
+    "ExchangeRate": 0.0,
+    "SaleType": "string"
+  },
+  "DetailsOne": [
+    {
+      "DocEntry": 0,
+      "LineNum": 0,
+      "ItemCode": "string",
+      "ItemName": "string",
+      "UoMentry": 0,
+      "Quantity": 0.0,
+      "UnitPrice": 0.0,
+      "DisPer": 0.0,
+      "DisAmount": 0.0,
+      "LineTotal": 0.0,
+      "WhsCode": "string",
+      "RefLineNum": 0,
+      "SaleType": "string",
+      "ProCode": "string",
+      "ProLineNum": "string",
+      "PromotionType": "string"
+    }
+  ],
+  "DetailsTwo": [
+    {
+      "LineNum": 0,
+      "ReasonCode": 0,
+      "ImageUrl": "string",
+      "Remark": "string"
+    }
+  ]
+}

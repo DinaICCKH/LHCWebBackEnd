@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Item Master Data";
+}
+<div class="row row-sub-page">
+    <div class="container-fluid container-sub-page">
+        <div class="row row-sub-page-header">
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-name">
+                <h6>Item Master Data</h6>
+            </div>
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-path">
+                <h6>SAP / Item Mater Data</h6>
+            </div>
+        </div>
+        <div class="row row-sub-page-body">
+            <div class="col col-xxl-6 col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 filter-container">
+                <div class="form-control combobox-container">
+                    <label for="combobox">Search by: *</label>
+                    <select id="combobox" class="combobox txt-search-by">
+                        <option value="" disabled>---select one---</option>
+                        <option value="All" selected>All</option>
+                        <option value="ItemCode">Item Code</option>
+                        <option value="ItemName">Item Name</option>
+                        <option value="ItmsGrpNam">Item Group</option>
+                        <option value="Principle">Principle</option>
+                    </select>
+                </div>
+                <div class="form-control input-container">
+                    <label for="textbox">Search: *</label>
+                    <input type="text" id="textbox" class="styled-input width-100 txt-search" placeholder="Typing here..." />
+                </div>
+                <div class="form-control combobox-container">
+                    <label for="combobox">Show Per Page: *</label>
+                    <select id="combobox" class="combobox txt-limit">
+                        <option value="10">10</option>
+                        <option value="20" selected>20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="500">500</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                <div class="table-container">
+                    <table class="styled-table table-bordered table table-item">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Item Code</th>
+                                <th>Item Name</th>
+                                <th>Item Group</th>
+                                <th>Inventory UoM</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                <div class="pagination">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        GetItemMasterDataList(1);
+        $(".txt-search-by").on("change",function(){
+         GetItemMasterDataList(1);
+        });
+        $(".txt-limit").on("change",function () {
+            GetItemMasterDataList(1);
+        });
+        $(".txt-search").on("input", function () {
+            GetItemMasterDataList(1);
+        });
+        
+    });
+</script>

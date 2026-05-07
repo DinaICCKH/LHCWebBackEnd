@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Promotion Detail";
+    tblPromotion head = ViewBag.head;
+}
+<div class="hidden-feild" style="display:none;">
+    <input type="hidden" id="txt-docentry" value="@head.ProEntry" />
+</div>
+<div class="row row-sub-page">
+    <div class="container-fluid container-sub-page">
+        <div class="row row-sub-page-header">
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-name">
+                <h6>Promotion Detail</h6>
+            </div>
+            <div class="col col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 col-page-path">
+                <h6>Promotion / Promotion Detail</h6>
+            </div>
+        </div>
+        <div class="row row-sub-page-body">
+            <div class="col col-xxl-4 col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-40">Code: </label>
+                    <input type="text" id="textbox" class="styled-input width-60 txt-promo-code" placeholder="Code" value="" readonly />
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-40">Promotion Type: </label>
+                    <input type="text" id="textbox" class="styled-input width-60 txt-promo-type" placeholder="Promotion Type" value="" readonly />
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-40">From Date: </label>
+                    <input type="text" id="textbox" class="styled-input width-60 datetime txt-promo-form-date" placeholder="dd-mm-yyyy" readonly />
+                </div>
+            </div>
+            <div class="col col-xxl-4 col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+            </div>
+            <div class="col col-xxl-4 col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 col-sub-page-body">
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-40">Description: </label>
+                    <input type="text" id="textbox" class="styled-input width-60 txt-promo-description" placeholder="Description" value="" readonly />
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-40">Status: </label>
+                    <input type="text" id="textbox" class="styled-input width-60 txt-promo-status" placeholder="Description" value="" readonly />
+                </div>
+                <div class="input-container flex-row">
+                    <label for="textbox" class="width-40">To Date: </label>
+                    <input type="text" id="textbox" class="styled-input width-60 datetime txt-promo-to-date" placeholder="dd-mm-yyyy" readonly />
+                </div>
+            </div>
+            <div class="col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 p-0">
+                <div class="table-container table-so-container">
+                    <table class="table-so table-promo-detail">
+                        <thead>
+                            <tr>
+                                <th>Group Code</th>
+                                <th>Group Name</th>
+                                <th>Customer</th>
+                                <th>Customer Name</th>
+                                <th>Promotion Group</th>
+                                <th>Quantity</th>
+                                <th>FOC</th>
+                                <th>Discount(%)</th>
+                                <th>Status</th>
+                                <th>Display Quantity</th>
+                                <th>Link FOC</th>
+                                <th>FOC Type</th>
+                                <th>Form QTY</th>
+                                <th>To QTY</th>
+                                <th>Discount($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            @* <div class="col col-xxl-2 col-xl-2 col-lg-12 col-md-12 col-sm-12 col-12 my-4 col-sub-page-body">
+                <div class="button-container flex-row">
+                    <button class="btn-save btn-warning" id="btn-back">OK</button>
+                </div>
+            </div> *@
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        flatpickr(".datetime", {
+            dateFormat: "d-m-Y",
+        });
+        GetPromotionDetail(@head.ProEntry);
+    });
+</script>
+
+

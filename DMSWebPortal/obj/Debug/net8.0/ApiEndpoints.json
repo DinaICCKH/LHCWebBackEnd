@@ -1,0 +1,2339 @@
+[
+  {
+    "ContainingType": "DMSWebPortal.Controllers.AlertController",
+    "Method": "GetAlertAsync",
+    "RelativePath": "api/Alert/get-alert",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.AlertController",
+    "Method": "SetAlertAsync",
+    "RelativePath": "api/Alert/set-alert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "DMSWebPortal.Models.SetAlertRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "AddCheckCustomer",
+    "RelativePath": "api/app/AddCheckCustomer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DocEntry",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "AppEntry",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CardCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckInImage",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckOutImage",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckInDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckOutDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckInGPS",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckOutGPS",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckInRemark",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckOutRemark",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckStatus",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AppOrderEntry",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "DMSOrderEntry",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SalesCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckInImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckOutImageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "CheckOutReasonsJson",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetAddresses",
+    "RelativePath": "api/app/AddressList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblAddress, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetBankLists",
+    "RelativePath": "api/app/BankLists",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblBank, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "PostBPRequest",
+    "RelativePath": "api/app/BPRequest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AppCode",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "BPEntry",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SalesCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CardName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CardFName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "VATNo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "VATImage",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContactPer",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "GroupCode",
+        "Type": "System.Nullable\u00601[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Channel",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TermCode",
+        "Type": "System.Nullable\u00601[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Phone1",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Phone2",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Phone3",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DisCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ComCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "VilName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "HouseNo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "StreetNo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FullAddKH",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FullAddEN",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "GPSLateLong",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrlServer",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AddressCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetCallPlansByUSalesCode",
+    "RelativePath": "api/app/CallPlans/{uSalesCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uSalesCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.DTOs.CallPlanDto, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetChannels",
+    "RelativePath": "api/app/ChannelList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblBPChannel, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetCustomerGroups",
+    "RelativePath": "api/app/CustomerGroupList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblBPGroup, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetCustomerList",
+    "RelativePath": "api/app/CustomerList/{uSalesCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uSalesCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "Get_Available_Order",
+    "RelativePath": "api/app/Get_Available_Order/{uSalesCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uSalesCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.v_Order, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "get_Order_Status",
+    "RelativePath": "api/app/get_Order_Status/{uSalesCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uSalesCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.v_Order_Status, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetUpdateDNStatus",
+    "RelativePath": "api/app/get_update_status/{salescode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "salescode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetTodayExchangeRate",
+    "RelativePath": "api/app/get-today-exchange-rate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "SAPSONo",
+    "RelativePath": "api/app/GetSAPNo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "order",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.v_OrderSAP, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "PostIncome",
+    "RelativePath": "api/app/Income",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "DMSWebPortal.DTOs.IncomeDtoApp",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetItemsBySalesCode",
+    "RelativePath": "api/app/ItemList/{U_SalesCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "U_SalesCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetItemPricing",
+    "RelativePath": "api/app/ItemPricing",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.DTOs.ItemPricingDto, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetItemStockBySalesCode",
+    "RelativePath": "api/app/ItemStock/{U_SalesCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "U_SalesCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetItemWhsPrice",
+    "RelativePath": "api/app/ItemWhsPrice",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblItemWhsPricing, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetLoginInfo",
+    "RelativePath": "api/app/Login",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uSalesCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "uSecret",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "uDeviceID",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DMSWebPortal.DTOs.AuthResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "PostOrder",
+    "RelativePath": "api/app/Orders_And_Reason_Order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "DMSWebPortal.DTOs.OrderRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetPaymentTerms",
+    "RelativePath": "api/app/PaymentTermList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblPayment, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetPrinciple",
+    "RelativePath": "api/app/Principle",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblPrinciple, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetPromotionCal",
+    "RelativePath": "api/app/ProCal",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cardcode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "docdate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "sellitem",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.v_promocal, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetProCondition",
+    "RelativePath": "api/app/ProCondition",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblProCondition, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetProFOCType",
+    "RelativePath": "api/app/ProFOCType",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblProFOCType, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetProMonthly",
+    "RelativePath": "api/app/ProMonthly",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblProMonthly, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetPromotion",
+    "RelativePath": "api/app/Promotion",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblPromotion, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetPromotion1",
+    "RelativePath": "api/app/Promotion1",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblPromotion1, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetProType",
+    "RelativePath": "api/app/ProType",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblProType, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetReasons",
+    "RelativePath": "api/app/Reason",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.Reason, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "RefreshToken",
+    "RelativePath": "api/app/RefreshToken",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "DMSWebPortal.DTOs.RefreshTokenRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DMSWebPortal.DTOs.AuthResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetRegionals",
+    "RelativePath": "api/app/Regional",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblRegional, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "Set_Available_Order",
+    "RelativePath": "api/app/Set_Available_Order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.v_Order_Status, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "set_Order_Status",
+    "RelativePath": "api/app/set_Order_Status",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderstatus",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.v_Order_Status, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetSubZone",
+    "RelativePath": "api/app/SubZone",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblSubZone, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetUoMGroup",
+    "RelativePath": "api/app/UoMGroup",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblUoMGroup, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetVisitPlansByUSalesCode",
+    "RelativePath": "api/app/VisitPlans/{uSalesCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uSalesCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.DTOs.VisitPlanDto_App, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetWhs",
+    "RelativePath": "api/app/Whs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblWh, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.appControllers",
+    "Method": "GetZone",
+    "RelativePath": "api/app/Zone",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DMSWebPortal.Models.tblZone, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.AuthController",
+    "Method": "GetLoginInfo",
+    "RelativePath": "api/auth/login",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "uSalesCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "uSecret",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "uDeviceID",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "uClientType",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DMSWebPortal.DTOs.AuthResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.AuthController",
+    "Method": "RefreshToken",
+    "RelativePath": "api/auth/refresh-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "DMSWebPortal.DTOs.RefreshTokenRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DMSWebPortal.DTOs.AuthResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.DMS_Controller",
+    "Method": "Login",
+    "RelativePath": "api/DMS_",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.DMS_Controller",
+    "Method": "GetItems",
+    "RelativePath": "api/DMS_",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.DMS_Controller",
+    "Method": "GetCustomer",
+    "RelativePath": "api/DMS_",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.DMS_Controller",
+    "Method": "GetWhs",
+    "RelativePath": "api/DMS_",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.DMS_Controller",
+    "Method": "GetUoM",
+    "RelativePath": "api/DMS_",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.DMS_Controller",
+    "Method": "GetUoMGroup",
+    "RelativePath": "api/DMS_",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.DMS_Controller",
+    "Method": "GetPriceList",
+    "RelativePath": "api/DMS_",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.DMS_Controller",
+    "Method": "GetItemPricing",
+    "RelativePath": "api/DMS_",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.DMS_Controller",
+    "Method": "GetVisitPlan",
+    "RelativePath": "api/DMS_",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.LoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.DMS_Controller",
+    "Method": "GetSOHeader",
+    "RelativePath": "api/DMS_/SORead",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fromDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "toDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "docStatus",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "cardCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "cardName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "salesCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "sapSyncStatus",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "source",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "saleType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "appStatus",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.DMS_Controller",
+    "Method": "GetSORows",
+    "RelativePath": "api/DMS_/SORows/{docEntry}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "docEntry",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.DMS_Controller",
+    "Method": "UpdateSOStatus",
+    "RelativePath": "api/DMS_/SOStatus/{docEntry}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "docEntry",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "DMSWebPortal.Models.UpdateSOStatusRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.MarketingController",
+    "Method": "AddOrUpdatePO",
+    "RelativePath": "api/Marketing",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.PO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.MarketingController",
+    "Method": "AddOrUpdateSO",
+    "RelativePath": "api/Marketing",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.Tbl_SO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.MasterDataController",
+    "Method": "AddOrUpdateItem",
+    "RelativePath": "api/MasterData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Mode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ItemCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ItemName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ItemGroupCode",
+        "Type": "System.Nullable\u00601[[System.Int16, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ItemGroupName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UgpEntry",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Onhand",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OnOrder",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsCommited",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Available",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "MinLevel",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "MaxLevel",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrlServer",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrlLocal",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FrgnName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "InvUoMCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "InvUoMEntry",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "UpdatedDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "OcrCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OcrCode2",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OcrCode3",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OcrCode4",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Manufacturer",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ManufacturerDes",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SubGroup",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SubGroupDes",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ItemBrand",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ItemBrandDes",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ItemType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ItemTypeDes",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProteinType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProteinTypeDes",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SubGroup2",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SubGroup2Des",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Factory",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FactoryDes",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "BarCode",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DefEntry",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "AltQty",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SellingPrice",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "imageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.MasterDataController",
+    "Method": "AddOrUpdateCustomer",
+    "RelativePath": "api/MasterData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.Customer",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.MasterDataController",
+    "Method": "AddOrUpdateWhs",
+    "RelativePath": "api/MasterData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.Whs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.MasterDataController",
+    "Method": "AddOrUpdatePriceList",
+    "RelativePath": "api/MasterData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.PriceList",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.MasterDataController",
+    "Method": "AddOrUpdateItemPricing",
+    "RelativePath": "api/MasterData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.ItemPricing",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.MasterDataController",
+    "Method": "AddOrUpdatePromotionV2",
+    "RelativePath": "api/MasterData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.PromotionHeaderV2",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.MasterDataController",
+    "Method": "AddOrUpdateUoM",
+    "RelativePath": "api/MasterData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.tblUoM",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.MasterDataController",
+    "Method": "AddOrUpdateUoMGroup",
+    "RelativePath": "api/MasterData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.tblUoMGroup",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.MasterDataController",
+    "Method": "AddOrUpdateUser",
+    "RelativePath": "api/MasterData",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DMSWebPortal.Models.User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.NotificationController",
+    "Method": "Notify",
+    "RelativePath": "api/Notification/notify",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_address",
+    "RelativePath": "api/sap/add_address",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblAddress, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_ar",
+    "RelativePath": "api/sap/add_ar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblItemWhsPricing, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_bank",
+    "RelativePath": "api/sap/add_bank",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblBank, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_bp",
+    "RelativePath": "api/sap/add_bp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.v_Bp, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_bpchannel",
+    "RelativePath": "api/sap/add_bpchannel",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblBPChannel, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_bpgroup",
+    "RelativePath": "api/sap/add_bpgroup",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblBPGroup, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_bpmapping",
+    "RelativePath": "api/sap/add_bpmapping",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblBPSalMapping, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_exchange",
+    "RelativePath": "api/sap/add_exchange",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.ExchangeRate, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_item",
+    "RelativePath": "api/sap/add_item",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.v_Item, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_item_batch",
+    "RelativePath": "api/sap/add_item_batch",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.TblItemBatch, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_item_whs_price",
+    "RelativePath": "api/sap/add_item_whs_price",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblItemWhsPricing, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_itemprice",
+    "RelativePath": "api/sap/add_itemprice",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblItemPricing, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_itemstock",
+    "RelativePath": "api/sap/add_itemstock",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblItemStock, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_maincat",
+    "RelativePath": "api/sap/add_maincat",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblMainCat, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_pricelist",
+    "RelativePath": "api/sap/add_pricelist",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblPriceList, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_principle",
+    "RelativePath": "api/sap/add_principle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblPrinciple, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_prom",
+    "RelativePath": "api/sap/add_prom",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblPromotion, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_prom1",
+    "RelativePath": "api/sap/add_prom1",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblPromotion1, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_promfoctype",
+    "RelativePath": "api/sap/add_promfoctype",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblProFOCType, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_promgroup",
+    "RelativePath": "api/sap/add_promgroup",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblPromotionGroup, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_regional",
+    "RelativePath": "api/sap/add_regional",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblRegional, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_sal_mapping",
+    "RelativePath": "api/sap/add_sal_mapping",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.v_salmapping, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_salesemployee",
+    "RelativePath": "api/sap/add_salesemployee",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblSalesEmployee, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_subcat",
+    "RelativePath": "api/sap/add_subcat",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblSubCat, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_SubZone",
+    "RelativePath": "api/sap/add_SubZone",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblSubZone, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_term",
+    "RelativePath": "api/sap/add_term",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblPayment, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_uomgroup",
+    "RelativePath": "api/sap/add_uomgroup",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblUoMGroup, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_whs",
+    "RelativePath": "api/sap/add_whs",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblWh, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "add_Zone",
+    "RelativePath": "api/sap/add_Zone",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "list",
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblZone, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "Get_Available_BP_Request",
+    "RelativePath": "api/sap/Get_Available_BP_Request",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.tblBPRequest, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "Get_Available_Income",
+    "RelativePath": "api/sap/Get_Available_Income",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.v_Income, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "Get_Available_Order",
+    "RelativePath": "api/sap/Get_Available_Order",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[DMSWebPortal.Models.v_Order, DMSWebPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "Set_BPRequest",
+    "RelativePath": "api/sap/Set_BPRequest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bp",
+        "Type": "DMSWebPortal.Models.tblBPRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "Set_Income",
+    "RelativePath": "api/sap/Set_Income",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "income",
+        "Type": "DMSWebPortal.Models.v_Income",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "Set_Order",
+    "RelativePath": "api/sap/Set_Order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "order",
+        "Type": "DMSWebPortal.Models.v_Order",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "Set_Order_Status",
+    "RelativePath": "api/sap/Set_Order_Status",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderstatus",
+        "Type": "DMSWebPortal.Models.v_Order_Status",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DMSWebPortal.Controllers.sapController",
+    "Method": "uploadImage",
+    "RelativePath": "api/sap/uploadImage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
