@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
-<Project>
-  <PropertyGroup>
-    <_PublishTargetUrl>C:\inetpub\wwwroot\SOAPI</_PublishTargetUrl>
-    <History>True|2026-05-07T07:44:52.9505376Z||;False|2026-05-07T14:35:22.5396897+07:00||;False|2026-05-07T14:32:07.3824859+07:00||;False|2026-05-07T14:26:54.0959347+07:00||;False|2026-05-07T14:24:49.8753395+07:00||;False|2026-05-07T14:21:25.5845978+07:00||;False|2026-05-07T14:15:44.8898946+07:00||;True|2026-05-06T14:31:31.8420925+07:00||;False|2026-05-06T14:30:46.2609631+07:00||;False|2026-05-06T14:22:25.2505753+07:00||;</History>
-    <LastFailureDetails />
-  </PropertyGroup>
-</Project>
