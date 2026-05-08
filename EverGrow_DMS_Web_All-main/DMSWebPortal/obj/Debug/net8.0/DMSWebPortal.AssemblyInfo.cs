@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DMSWebPortal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a21c80c078d9b0fe9ca0496ada331ea110b49869")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84445decfa97e55bf445a3a1a6cf059928a18dc4")]
 [assembly: System.Reflection.AssemblyProductAttribute("DMSWebPortal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DMSWebPortal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

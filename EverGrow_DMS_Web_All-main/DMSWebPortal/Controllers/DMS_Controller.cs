@@ -544,7 +544,7 @@ namespace DMSWebPortal.Controllers
         {
             try
             {
-                // ✅ Build WHERE conditions dynamically
+                //  Build WHERE conditions dynamically
                 var conditions = new List<string> { "1=1" };
                 var parameters = new List<SqlParameter>();
 
